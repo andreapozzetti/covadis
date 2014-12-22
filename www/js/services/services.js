@@ -2,10 +2,9 @@
 'use strict';
 /* Services */
 // Simple value service.
-angular.module('coVadis.services', []).
-value('version', '0.1');
+angular.module('Service', [])
 // phonegap ready service - listens to deviceready
-coVadis.factory('phonegapReady', function() {
+.factory('phonegapReady', function() {
 return function (fn) {
 var queue = [];
 var impl = function () {
@@ -21,9 +20,9 @@ return function () {
 return impl.apply(this, arguments);
 };
 };
-});
+})
 
-coVadis.factory('geolocation', function ($rootScope, phonegapReady) {
+.factory('geolocation', function ($rootScope, phonegapReady) {
 return {
 getCurrentPosition: function (onSuccess, onError, options) {
 navigator.geolocation.getCurrentPosition(function () {
