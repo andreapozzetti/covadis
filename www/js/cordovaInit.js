@@ -6,8 +6,8 @@ var CordovaInit = function() {
 	};
 
 	var receivedEvent = function() {
-		console.log('Start event received, bootstrapping application setup.');
-		angular.bootstrap($('body'), ['c3aApp']);
+		alert('Start event received, bootstrapping application setup.');
+		angular.bootstrap($('body'), ['coVadis']);
 	};
 
 	this.bindEvents = function() {
@@ -18,10 +18,10 @@ var CordovaInit = function() {
 //bootstrap the application.
 
 if (window.cordova !== undefined) {
-	console.log('Cordova found, wating for device.');
+	alert('Cordova found, wating for device.');
 	this.bindEvents();
 } else {
-	console.log('Cordova not found, booting application');
+	alert('Cordova not found, booting application');
 	receivedEvent('manual');
 }
 
@@ -29,7 +29,7 @@ if (window.cordova !== undefined) {
 
 
 $(function() {
-	console.log('Bootstrapping!');
+	alert('Bootstrapping!');
 	new CordovaInit();
 });
 
