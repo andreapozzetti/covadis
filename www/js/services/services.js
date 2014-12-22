@@ -26,7 +26,7 @@ return impl.apply(this, arguments);
 return {
 
 getPosition: function (onSuccess, onError, options) {
-	navigator.geolocation.getCurrentPosition(function () {
+	navigator.geolocation.watchPosition(function () {
 
 	var that = this,
 	args = arguments;
