@@ -45,7 +45,7 @@ getPosition: function (onSuccess, onError, options) {
 	});
 	}
 	},
-	options);
+	{ maximumAge: 3000, timeout: 5000, enableHighAccuracy: true });
 }
 };
 });
