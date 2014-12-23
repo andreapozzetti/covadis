@@ -30,7 +30,7 @@
     <gap:plugin name="org.apache.cordova.splashscreen" version="0.3.4" />
     <gap:plugin name="org.apache.cordova.geolocation" version="0.3.10" />
     <gap:plugin name="org.apache.cordova.device" version="0.2.12" />
-    <gap:plugin name="de.appplant.cordova.plugin.local-notification" />
+    <gap:plugin name="de.appplant.cordova.plugin.local-notification-sv" version="1.2.5" />
 
     <icon src="icon.png" />
     <icon gap:density="ldpi" gap:platform="android" src="res/icons/android/icon-36-ldpi.png" />
