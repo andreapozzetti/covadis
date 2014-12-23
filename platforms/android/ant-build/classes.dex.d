@@ -1,0 +1,21 @@
+/Users/andrea/covadis/platforms/android/ant-build/classes.dex : \
+/Users/andrea/covadis/platforms/android/ant-build/classes/com/covadis/covadis/BuildConfig.class \
+/Users/andrea/covadis/platforms/android/ant-build/classes/com/covadis/covadis/CordovaApp.class \
+/Users/andrea/covadis/platforms/android/ant-build/classes/com/covadis/covadis/R$attr.class \
+/Users/andrea/covadis/platforms/android/ant-build/classes/com/covadis/covadis/R$drawable.class \
+/Users/andrea/covadis/platforms/android/ant-build/classes/com/covadis/covadis/R$string.class \
+/Users/andrea/covadis/platforms/android/ant-build/classes/com/covadis/covadis/R$xml.class \
+/Users/andrea/covadis/platforms/android/ant-build/classes/com/covadis/covadis/R.class \
+/Users/andrea/covadis/platforms/android/ant-build/classes/de/appplant/cordova/plugin/localnotification/LocalNotification$1.class \
+/Users/andrea/covadis/platforms/android/ant-build/classes/de/appplant/cordova/plugin/localnotification/LocalNotification$2.class \
+/Users/andrea/covadis/platforms/android/ant-build/classes/de/appplant/cordova/plugin/localnotification/LocalNotification$3.class \
+/Users/andrea/covadis/platforms/android/ant-build/classes/de/appplant/cordova/plugin/localnotification/LocalNotification$4.class \
+/Users/andrea/covadis/platforms/android/ant-build/classes/de/appplant/cordova/plugin/localnotification/LocalNotification$5.class \
+/Users/andrea/covadis/platforms/android/ant-build/classes/de/appplant/cordova/plugin/localnotification/LocalNotification.class \
+/Users/andrea/covadis/platforms/android/ant-build/classes/de/appplant/cordova/plugin/localnotification/Options.class \
+/Users/andrea/covadis/platforms/android/ant-build/classes/de/appplant/cordova/plugin/localnotification/Receiver.class \
+/Users/andrea/covadis/platforms/android/ant-build/classes/de/appplant/cordova/plugin/localnotification/ReceiverActivity.class \
+/Users/andrea/covadis/platforms/android/ant-build/classes/de/appplant/cordova/plugin/localnotification/Restore.class \
+/Users/andrea/covadis/platforms/android/ant-build/classes/org/apache/cordova/device/Device.class \
+/Users/andrea/covadis/platforms/android/ant-build/classes/org/apache/cordova/splashscreen/SplashScreen.class \
+/Users/andrea/covadis/platforms/android/ant-build/dexedLibs/classes-02bd2f9e6f690db3d91b76d12fc669dc.jar \
