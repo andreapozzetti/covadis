@@ -48,4 +48,16 @@ getPosition: function (onSuccess, onError, options) {
 	{ maximumAge: 3000, timeout: 5000, enableHighAccuracy: true });
 }
 };
+})
+
+.factory('localNotification', function ($rootScope, phonegapReady) {
+return {
+
+localNotification: function (response) {
+	window.plugin.notification.local.hasPermission(function (granted) {
+    alert('Permission has been granted: ' + granted);
+});
+
+}
+};
 });
