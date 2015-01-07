@@ -72,8 +72,9 @@ angular.module('Service', [])
   return function(done) {
     deviceReady(function(){
 
-    var now = new Date().getTime();
-    var sixtySeconds = new Date(now+60*1000);
+
+      var now = new Date().getTime();
+      var sixtySeconds = new Date(now + 60*1000);
 
       window.plugin.notification.local.add({
           id:      1,
@@ -81,6 +82,12 @@ angular.module('Service', [])
           message: 'Dont forget to buy some flowers.',
           repeat:  'weekly',
           date:    sixtySeconds
+      });
+
+      window.plugin.notification.local.onadd(function (id, state, json) {
+        $rootScope.$apply(function(){
+          done(id, state, json);
+        });
       }, function(error){
         $rootScope.$apply(function(){
           throw new Error('Unable to retreive permission');
