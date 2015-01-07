@@ -51,10 +51,10 @@ angular.module('HomeCtrl', []).controller('HomeCtrl', function($scope, getCurren
       $scope.id = id;
       $scope.state = state;
       $scope.json = json;
-      alert('ciao');
-      alert($scope.id);
-      alert($scope.state);
-      alert($scope.json);
+      //alert('ciao');
+      //alert($scope.id);
+      //alert($scope.state);
+      //alert($scope.json);
       });
       
 
