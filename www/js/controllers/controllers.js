@@ -1,4 +1,4 @@
-angular.module('HomeCtrl', []).controller('HomeCtrl', function($scope, getCurrentPosition, localNotificationHasPermission, localNotificationPromptPermission, localNotification) {
+angular.module('HomeCtrl', []).controller('HomeCtrl', function($scope, getCurrentPosition, localNotificationHasPermission, localNotificationPromptPermission, localNotificationSetup) {
 
 
   getCurrentPosition(function(position){
@@ -21,7 +21,7 @@ angular.module('HomeCtrl', []).controller('HomeCtrl', function($scope, getCurren
       alert('has' + $scope.grantedHas);
   });
 
-  localNotification(function(id, state, json){
+  localNotificationSetup(function(id, state, json){
       $scope.id = id;
       $scope.state = state;
       $scope.json = json;
