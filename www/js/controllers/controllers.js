@@ -6,14 +6,14 @@ angular.module('HomeCtrl', []).controller('HomeCtrl', function($scope, getCurren
       $scope.latitude = position.coords.latitude;
       $scope.longitude = position.coords.longitude;
       console.log("ciao");
-      console.log($scope.latitude);
+      alert($scope.latitude);
   });
 
   localNotification(function(granted){
     
       $scope.granted = granted;
       console.log("ciao");
-      console.log($scope.granted);
+      alert($scope.granted);
   });
 
   /*
