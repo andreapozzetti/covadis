@@ -97,4 +97,23 @@ angular.module('Service', [])
   };
 })
 
+.factory('parkInfo', function(deviceReady, $document, $window, $rootScope, $http){
+
+    return {
+        // call to get all nerds
+        freeParking : function() {
+      
+            return $http({
+                      method  : 'get',
+                      url     : 'http://www.andreapozzetti.eu/covadis/date.php',
+                      headers : { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' }
+                })
+              .then(function(result) {
+                return result.data;
+            });
+        }
+    }       
+
+});
+
 

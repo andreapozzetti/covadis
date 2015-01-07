@@ -1,5 +1,6 @@
-angular.module('HomeCtrl', []).controller('HomeCtrl', function($scope, getCurrentPosition, localNotificationHasPermission, localNotificationPromptPermission, localNotificationSetup) {
+angular.module('HomeCtrl', []).controller('HomeCtrl', function($scope, getCurrentPosition, localNotificationHasPermission, localNotificationPromptPermission, localNotificationSetup, parkInfo) {
 
+  /*
 
   getCurrentPosition(function(position){
     
@@ -21,7 +22,7 @@ angular.module('HomeCtrl', []).controller('HomeCtrl', function($scope, getCurren
       //alert('has' + $scope.grantedHas);
   });
 
-  setTimeout(function(){
+  
 
       localNotificationSetup(function(id, state, json){
       $scope.id = id;
@@ -33,7 +34,31 @@ angular.module('HomeCtrl', []).controller('HomeCtrl', function($scope, getCurren
       alert($scope.json);
       });
 
-  }, 15000);
+
+
+  */
+
+  setTimeout(function(){
+
+  parkInfo.freeParking().then(function(numberOfFreeParking) {
+
+    if(numberOfFreeParking.orario == 1){
+
+      localNotificationSetup(function(id, state, json){
+      $scope.id = id;
+      $scope.state = state;
+      $scope.json = json;
+      alert('ciao');
+      alert($scope.id);
+      alert($scope.state);
+      alert($scope.json);
+      });
+
+    };
+
+  });
+
+  }, 10000);
 
 
 
