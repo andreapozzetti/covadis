@@ -68,7 +68,7 @@ angular.module('Service', [])
   };
 })
 
-.factory('localNotification', function(deviceReady, $document, $window, $rootScope){
+.factory('localNotificationSetup', function(deviceReady, $document, $window, $rootScope){
   return function(done) {
     deviceReady(function(){
 
@@ -78,13 +78,11 @@ angular.module('Service', [])
 
       window.plugin.notification.local.add({
           id:      1,
-          title:   'Reminder',
-          message: 'Dont forget to buy some flowers.',
-          repeat:  'weekly',
-          date:    sixtySeconds
+          title:   'WARNING',
+          message: 'test message'
       });
-      /*
-      window.plugin.notification.local.onadd(function (id, state, json) {
+      
+      window.plugin.notification.local.onadd = function (id, state, json) {
         $rootScope.$apply(function(){
           done(id, state, json);
         });
@@ -93,9 +91,10 @@ angular.module('Service', [])
           throw new Error('Unable to retreive permission');
         });
       });
-    */
+    
     
     });
   };
-});
+})
+
 
