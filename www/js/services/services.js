@@ -74,7 +74,7 @@ angular.module('Service', [])
 
 
       var now = new Date().getTime();
-      var sixtySeconds = new Date(now + 60*1000);
+      var sixtySeconds = new Date(now + 10*1000);
 
       window.plugin.notification.local.add({
           id:      1,
@@ -83,7 +83,7 @@ angular.module('Service', [])
           repeat:  'weekly',
           date:    sixtySeconds
       });
-
+      /*
       window.plugin.notification.local.onadd(function (id, state, json) {
         $rootScope.$apply(function(){
           done(id, state, json);
@@ -93,6 +93,7 @@ angular.module('Service', [])
           throw new Error('Unable to retreive permission');
         });
       });
+    */
     
     });
   };
