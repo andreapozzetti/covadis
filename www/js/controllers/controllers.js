@@ -18,7 +18,7 @@ angular.module('HomeCtrl', []).controller('HomeCtrl', function($scope, getCurren
   localNotificationHasPermission(function(granted){
       $scope.grantedHas = granted;
       console.log("ciao");
-      alert('has' + $scope.grantedHas);
+      //alert('has' + $scope.grantedHas);
   });
 
   localNotificationSetup(function(id, state, json){
