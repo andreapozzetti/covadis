@@ -38,12 +38,15 @@ angular.module('HomeCtrl', []).controller('HomeCtrl', function($scope, getCurren
 
   */
 
-  setTimeout(function(){
+  setInterval(function(){
 
   parkInfo.freeParking().then(function(numberOfFreeParking) {
 
-    if(numberOfFreeParking.orario == 1){
+    $scope.numberOfFreeParking = parseInt(numberOfFreeParking.orario);
+   
+    if($scope.numberOfFreeParking == 1){
 
+      
       localNotificationSetup(function(id, state, json){
       $scope.id = id;
       $scope.state = state;
@@ -53,12 +56,15 @@ angular.module('HomeCtrl', []).controller('HomeCtrl', function($scope, getCurren
       alert($scope.state);
       alert($scope.json);
       });
+      
+
+      console.log("ciao");
 
     };
 
   });
 
-  }, 10000);
+  }, 5000);
 
 
 
