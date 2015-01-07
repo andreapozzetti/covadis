@@ -21,7 +21,9 @@ angular.module('HomeCtrl', []).controller('HomeCtrl', function($scope, getCurren
       //alert('has' + $scope.grantedHas);
   });
 
-  localNotificationSetup(function(id, state, json){
+  setTimeout(function(){
+
+      localNotificationSetup(function(id, state, json){
       $scope.id = id;
       $scope.state = state;
       $scope.json = json;
@@ -29,8 +31,11 @@ angular.module('HomeCtrl', []).controller('HomeCtrl', function($scope, getCurren
       alert($scope.id);
       alert($scope.state);
       alert($scope.json);
+      });
 
-  });
+  }, 15000);
+
+
 
   /*
   try {
