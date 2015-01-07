@@ -90,7 +90,7 @@ angular.module('Service', [])
         $rootScope.$apply(function(){
           throw new Error('Unable to retreive permission');
         });
-      });
+      };
     
     
     });
