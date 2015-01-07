@@ -1,4 +1,4 @@
-angular.module('HomeCtrl', []).controller('HomeCtrl', function($scope, getCurrentPosition, localNotification) {
+angular.module('HomeCtrl', []).controller('HomeCtrl', function($scope, getCurrentPosition, localNotificationHasPermission, localNotificationPromptPermission) {
 
 
   getCurrentPosition(function(position){
@@ -9,11 +9,16 @@ angular.module('HomeCtrl', []).controller('HomeCtrl', function($scope, getCurren
       alert($scope.latitude);
   });
 
-  localNotification(function(granted){
-    
+  localNotificationPromptPermission(function(granted){
       $scope.granted = granted;
       console.log("ciao");
-      alert($scope.granted);
+      alert('prompt' + $scope.granted);
+  });
+
+  localNotificationHasPermission(function(granted){
+      $scope.granted = granted;
+      console.log("ciao");
+      alert('has' + $scope.granted);
   });
 
   /*

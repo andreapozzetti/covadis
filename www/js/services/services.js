@@ -32,13 +32,30 @@ angular.module('Service', [])
   };
 })
 
-.factory('localNotification', function(deviceReady, $document, $window, $rootScope){
+.factory('localNotificationPromptPermission', function(deviceReady, $document, $window, $rootScope){
+  return function(done) {
+    deviceReady(function(){
+
+      window.plugin.notification.local.promptForPermission(function (granted) {
+        $rootScope.$apply(function(){
+          done(granted);
+        });
+      }, function(error){
+        $rootScope.$apply(function(){
+          throw new Error('Unable to retreive permission');
+        });
+      });
+    
+    });
+  };
+});
+
+.factory('localNotificationHasPermission', function(deviceReady, $document, $window, $rootScope){
   return function(done) {
     deviceReady(function(){
 
       window.plugin.notification.local.hasPermission(function (granted) {
         $rootScope.$apply(function(){
-          alert('permission ' + granted);
           done(granted);
         });
       }, function(error){
