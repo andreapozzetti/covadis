@@ -48,7 +48,7 @@ angular.module('Service', [])
     
     });
   };
-});
+})
 
 .factory('localNotificationHasPermission', function(deviceReady, $document, $window, $rootScope){
   return function(done) {

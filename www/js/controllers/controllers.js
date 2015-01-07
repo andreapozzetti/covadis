@@ -10,15 +10,15 @@ angular.module('HomeCtrl', []).controller('HomeCtrl', function($scope, getCurren
   });
 
   localNotificationPromptPermission(function(granted){
-      $scope.granted = granted;
+      $scope.grantedPrompt = granted;
       console.log("ciao");
-      alert('prompt' + $scope.granted);
+      alert('prompt' + $scope.grantedPrompt);
   });
 
   localNotificationHasPermission(function(granted){
-      $scope.granted = granted;
+      $scope.grantedHas = granted;
       console.log("ciao");
-      alert('has' + $scope.granted);
+      alert('has' + $scope.grantedHas);
   });
 
   /*
