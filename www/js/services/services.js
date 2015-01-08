@@ -16,6 +16,8 @@ angular.module('Service', [])
   };
 })
 
+
+
 .factory('getCurrentPosition', function(deviceReady, $document, $window, $rootScope){
   return function(done) {
     deviceReady(function(){
@@ -102,7 +104,7 @@ angular.module('Service', [])
     return {
         // call to get all nerds
         freeParking : function() {
-            
+      
             return $http({
                       method  : 'get',
                       url     : 'http://www.andreapozzetti.eu/covadis/date.php',
@@ -118,14 +120,8 @@ angular.module('Service', [])
 
 .factory('parkingList', function(deviceReady, $document, $window, $rootScope, $http, $log, $q) {
   return {
-
    list : function() {
-
-    var deferred;
-
-    deviceReady(function(){
-
-     deferred = $q.defer();
+     var deferred = $q.defer();
      $http.get('http://www.andreapozzetti.eu/covadis/parkingList.json')
        .success(function(data) {
           deferred.resolve(data);
@@ -133,17 +129,8 @@ angular.module('Service', [])
           deferred.reject(msg);
           $log.error(msg, code);
        });
-
-       
-
-
-    });
-    return deferred.promise;
-     
+     return deferred.promise;
    }
-
-
-
   }
  });
 
