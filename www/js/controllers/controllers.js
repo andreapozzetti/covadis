@@ -27,12 +27,8 @@ angular.module('HomeCtrl', [])
   });
 
   notificationSetup.showNotification(function(){
-      
-  });
 
-  notificationOnAdd.onAdd(function(callBack){
-
-      alert(JSON.stringify(callBack));
+    window.plugin.notification.local.onadd = function (id, state, json) {
 
       $scope.id = id;
       $scope.state = state;
@@ -41,6 +37,8 @@ angular.module('HomeCtrl', [])
       alert($scope.id);
       alert($scope.state);
       alert($scope.json);
+
+    };
       
   });
 

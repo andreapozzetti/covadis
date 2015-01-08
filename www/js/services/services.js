@@ -70,24 +70,6 @@ angular.module('Service', [])
   };
 })
 
-.factory('notificationOnAdd', function ($rootScope) {
-  return {
-    onAdd: function () {
-
-          var response;
-
-          window.plugin.notification.local.onadd = function (id, state, json) {
-
-            response = {"id": id, "state": state, "json": json};
-
-          };
-          
-          alert(JSON.stringify(response));
-          return response;
-    }
-  };
-})
-
 /*
 .factory('localNotificationSetup', function(deviceReady, $document, $window, $rootScope){
   return function(done) {
