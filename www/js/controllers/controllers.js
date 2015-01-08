@@ -1,5 +1,5 @@
 angular.module('HomeCtrl', [])
-.controller('HomeCtrl', function($scope, geolocation, notificationPromptPermission) {
+.controller('HomeCtrl', function($scope, geolocation, notificationPromptPermission, notificationHasPermission) {
 
   
 
@@ -20,14 +20,13 @@ angular.module('HomeCtrl', [])
       alert('prompt' + $scope.grantedPrompt);
   });
   
-  /*
-  localNotificationHasPermission(function(granted){
+  
+  notificationHasPermission.hasPermission(function(granted){
       $scope.grantedHas = granted;
-      console.log("ciao");
-      //alert('has' + $scope.grantedHas);
+      alert('has' + $scope.grantedHas);
   });
 
-  
+  /*
 
       localNotificationSetup(function(id, state, json){
       $scope.id = id;

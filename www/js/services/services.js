@@ -38,7 +38,20 @@ angular.module('Service', [])
         promptNotification : function() {
             console.log("ciao");
               window.plugin.notification.local.promptForPermission(function (granted) {
-                alert(granted);
+                return granted;
+              })
+        }
+    }       
+
+})
+
+.factory('notificationHasPermission', function ($document, $window, $rootScope){
+
+    return {
+        // call to get all nerds
+        hasPermission : function() {
+            console.log("ciao");
+              window.plugin.notification.local.hasPermission(function (granted) {
                 return granted;
               })
         }
