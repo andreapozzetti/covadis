@@ -1,4 +1,5 @@
-angular.module('HomeCtrl', []).controller('HomeCtrl', function($scope, getCurrentPosition, localNotificationHasPermission, localNotificationPromptPermission, localNotificationSetup, parkInfo) {
+angular.module('HomeCtrl', [])
+.controller('HomeCtrl', function($scope, getCurrentPosition, localNotificationHasPermission, localNotificationPromptPermission, localNotificationSetup, parkInfo, parkingList) {
 
   /*
 
@@ -36,7 +37,7 @@ angular.module('HomeCtrl', []).controller('HomeCtrl', function($scope, getCurren
 
 
 
-  */
+  
 
   setInterval(function(){
 
@@ -65,8 +66,45 @@ angular.module('HomeCtrl', []).controller('HomeCtrl', function($scope, getCurren
   });
 
   }, 5000);
+  
+  */
+  
+  $scope.parkingList = parkingList.list().then(function(data) {
+
+      $scope.parkingList = data;
+      
+        angular.forEach($scope.parkingList, function(obj){
+          $scope.number = Math.floor(Math.random() * ((10-2)+1) + 2);
+          obj.freeCarPark = $scope.number;
+        });
+
+      return $scope.parkingList;
+
+  });
 
 
+      setInterval(function(){
+
+        $scope.parkingList = angular.forEach($scope.parkingList, function(obj){
+          $scope.number = Math.floor(Math.random() * ((10-2)+1) + 2);
+          obj.freeCarPark = $scope.number;
+        });
+
+        $scope.$apply();
+
+      }, 5000);
+
+  console.log($scope.parkingList);
+
+
+
+
+
+
+  /*
+
+  */
+  
 
   /*
   try {

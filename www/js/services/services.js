@@ -114,6 +114,22 @@ angular.module('Service', [])
         }
     }       
 
-});
+})
+
+.factory('parkingList', function(deviceReady, $document, $window, $rootScope, $http, $log, $q) {
+  return {
+   list : function() {
+     var deferred = $q.defer();
+     $http.get('http://www.andreapozzetti.eu/covadis/parkingList.json')
+       .success(function(data) {
+          deferred.resolve(data);
+       }).error(function(msg, code) {
+          deferred.reject(msg);
+          $log.error(msg, code);
+       });
+     return deferred.promise;
+   }
+  }
+ });
 
 

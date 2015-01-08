@@ -1,3 +1,7 @@
-<div>
-ciao
+<div class="list-group">
+  <a href="#" ng-repeat="parking in parkingList" class="list-group-item">
+    <span class="badge">{{parking.freeCarPark}}/{{parking.totalCarPark}}</span>
+    <h4 class="list-group-item-heading">{{parking.name}}</h4>
+    <p class="list-group-item-text">{{parking.address}}</p>
+  </a>
 </div>
