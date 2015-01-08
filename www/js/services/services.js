@@ -70,16 +70,19 @@ angular.module('Service', [])
   };
 })
 
-.factory('notificationOnAdd', function ($rootScope, $q) {
-  return {
+.factory('notificationOnAdd', function ($rootScope) {
+  return function(done) {
 
-          window.plugin.notification.local.onadd = function (id, state, json) {
+      window.plugin.notification.local.onadd = function (id, state, json) {
+        $rootScope.$apply(function(){
+          done(id, state, json);
+        });
+      }, function(error){
+        $rootScope.$apply(function(){
+          throw new Error('Unable to retreive permission');
+        });
+      };
 
-            response = {"id": id, "state": state, "json": json};
-            
-            return response; 
-
-          };
   };
 })
 

@@ -30,7 +30,7 @@ angular.module('HomeCtrl', [])
       
   });
 
-  notificationOnAdd.onAdd(function(callBack){
+  notificationOnAdd(function(callBack){
 
       alert(JSON.stringify(callBack));
 
