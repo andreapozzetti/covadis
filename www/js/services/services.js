@@ -72,9 +72,13 @@ angular.module('Service', [])
 
 .factory('notificationOnAdd', function ($rootScope) {
   return {
-    onAdd: function (id, state, json, callBack) {
+    onAdd: function () {
 
-          window.plugin.notification.local.onadd = function () {
+          window.plugin.notification.local.onadd = function (id, state, json) {
+
+            alert(id);
+            alert(state);
+            alert(json);
 
           var that = this,
           args = arguments;
