@@ -31,14 +31,14 @@ angular.module('Service', [])
   };
 })
 
-.factory('notificationPromptPermission', function($document, $window, $rootScope){
+.factory('notificationPromptPermission', function ($document, $window, $rootScope){
 
     return {
         // call to get all nerds
         promptNotification : function() {
-      
-            return
+            console.log("ciao");
               window.plugin.notification.local.promptForPermission(function (granted) {
+                alert(granted);
                 return granted;
               })
         }

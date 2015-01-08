@@ -4,15 +4,18 @@ angular.module('HomeCtrl', [])
   
 
 
+  /*
   geolocation.getPosition(function(position){
       $scope.latitude = position.coords.latitude;
       $scope.longitude = position.coords.longitude;
       alert($scope.latitude);
   });
+  */
 
 
   
   notificationPromptPermission.promptNotification(function(granted){
+      alert("ciao");
       $scope.grantedPrompt = granted;
       alert('prompt' + $scope.grantedPrompt);
   });
