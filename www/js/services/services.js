@@ -16,23 +16,32 @@ angular.module('Service', [])
   };
 })
 
+.factory('geolocation', function($document, $window, $rootScope){
+  return {
+    getCurrentPosition: function (onSuccess, onError, options) {
+      navigator.geolocation.getCurrentPosition(function () {
+        var that = this,
+          args = arguments;
 
+        if (onSuccess) {
+          $rootScope.$apply(function () {
+            onSuccess.apply(that, args);
+          });
+        }
+      }, function () {
+        var that = this,
+          args = arguments;
 
-.factory('getCurrentPosition', function(deviceReady, $document, $window, $rootScope){
-  return function(done) {
-    deviceReady(function(){
-      navigator.geolocation.getCurrentPosition(function(position){
-        $rootScope.$apply(function(){
-          done(position);
-        });
-      }, function(error){
-        $rootScope.$apply(function(){
-          throw new Error('Unable to retreive position');
-        });
-      });
-    });
+        if (onError) {
+          $rootScope.$apply(function () {
+            onError.apply(that, args);
+          });
+        }
+      },
+      options);
+    }
   };
-})
+});
 
 .factory('localNotificationPromptPermission', function(deviceReady, $document, $window, $rootScope){
   return function(done) {

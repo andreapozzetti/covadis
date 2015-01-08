@@ -1,15 +1,16 @@
 angular.module('HomeCtrl', [])
-.controller('HomeCtrl', function($scope, getCurrentPosition, localNotificationHasPermission, localNotificationPromptPermission, localNotificationSetup, parkInfo, parkingList) {
+.controller('HomeCtrl', function($scope, geolocation, localNotificationHasPermission, localNotificationPromptPermission, localNotificationSetup, parkInfo, parkingList) {
 
-  /*
+  
 
-  getCurrentPosition(function(position){
+  geolocation.getCurrentPosition(function(position){
     
       $scope.latitude = position.coords.latitude;
       $scope.longitude = position.coords.longitude;
-      console.log("ciao");
       alert($scope.latitude);
   });
+
+  /*
 
   localNotificationPromptPermission(function(granted){
       $scope.grantedPrompt = granted;
