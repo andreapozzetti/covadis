@@ -72,24 +72,14 @@ angular.module('Service', [])
 
 .factory('notificationOnAdd', function ($rootScope, $q) {
   return {
-    onAdd: function () {
-
-          var response;
 
           window.plugin.notification.local.onadd = function (id, state, json) {
 
             response = {"id": id, "state": state, "json": json};
             
-            $rootScope.$apply(function(){
-              response;
-            });
+            return response;
 
           };
-
-          alert(JSON.stringify(response));
-
-          return response;
-    }
   };
 })
 
