@@ -80,14 +80,10 @@ angular.module('Service', [])
             alert(state);
             alert(json);
 
-          var that = this,
-          args = arguments;
+            var response = {"id": id, "state": state, "json": json};
 
-          $rootScope.$apply(function () {
-
-          callBack.apply(that, args);
-          
-          });
+            alert(JSON.stringify(response));
+            return response;
 
           };
       
