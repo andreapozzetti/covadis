@@ -77,7 +77,7 @@ angular.module('Service', [])
 
             response = {"id": id, "state": state, "json": json};
             
-            return response;
+            return response; 
 
           };
   };
