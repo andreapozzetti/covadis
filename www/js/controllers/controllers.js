@@ -23,7 +23,7 @@ angular.module('HomeCtrl', [])
   
   notificationHasPermission.hasPermission(function(granted){
       $scope.grantedHas = granted;
-      alert('has' + $scope.grantedHas);
+      alert('has ' + $scope.grantedHas);
   });
 
   notificationSetup.showNotification(function(){
