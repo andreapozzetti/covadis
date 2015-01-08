@@ -41,7 +41,7 @@ angular.module('Service', [])
       options);
     }
   };
-});
+})
 
 .factory('localNotificationPromptPermission', function(deviceReady, $document, $window, $rootScope){
   return function(done) {
