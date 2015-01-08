@@ -69,8 +69,7 @@ angular.module('HomeCtrl', [])
   });
 
   }, 5000);
-  
-  */
+
   
   $scope.parkingList = parkingList.list().then(function(data) {
 
