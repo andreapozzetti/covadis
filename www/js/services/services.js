@@ -31,6 +31,8 @@ angular.module('Service', [])
   };
 })
 
+
+
 .factory('notificationPromptPermission', function ($document, $window, $rootScope){
 
     return {
@@ -45,18 +47,17 @@ angular.module('Service', [])
 
 })
 
-.factory('notificationHasPermission', function ($document, $window, $rootScope){
-
-    return {
-        // call to get all nerds
-        hasPermission : function() {
-            console.log("ciao");
-              window.plugin.notification.local.hasPermission(function (granted) {
-                return granted;
-              })
-        }
-    }       
-
+.factory('notificationHasPermission', function ($rootScope) {
+  return {
+    hasPermission: function (granted) {
+      window.plugin.notification.local.hasPermission(function () {
+        var that = this, args = arguments;
+          $rootScope.$apply(function () {
+            onSuccess.apply(that, args);
+          });
+      });
+    }
+  };
 })
 
 /*
