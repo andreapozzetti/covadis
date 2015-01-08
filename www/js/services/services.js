@@ -80,10 +80,9 @@ angular.module('Service', [])
 
             response = {"id": id, "state": state, "json": json};
 
-            alert(JSON.stringify(response));
-
           };
-      
+          
+          alert(JSON.stringify(response));
           return response;
     }
   };
