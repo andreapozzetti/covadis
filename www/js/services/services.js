@@ -31,20 +31,17 @@ angular.module('Service', [])
   };
 })
 
-
-
-.factory('notificationPromptPermission', function ($document, $window, $rootScope){
-
-    return {
-        // call to get all nerds
-        promptNotification : function() {
-            console.log("ciao");
-              window.plugin.notification.local.promptForPermission(function (granted) {
-                return granted;
-              })
-        }
-    }       
-
+.factory('notificationPromptPermission', function ($rootScope) {
+  return {
+    promptNotification: function (granted) {
+      window.plugin.notification.local.promptForPermission(function () {
+        var that = this, args = arguments;
+          $rootScope.$apply(function () {
+            granted.apply(that, args);
+          });
+      });
+    }
+  };
 })
 
 .factory('notificationHasPermission', function ($rootScope) {
@@ -57,6 +54,48 @@ angular.module('Service', [])
           });
       });
     }
+  };
+})
+
+.factory('notificationSetup', function ($rootScope) {
+  return {
+    showNotification: function (done) {
+
+      window.plugin.notification.local.add({
+          id:      1,
+          title:   'WARNING',
+          message: 'test message'
+      });
+    }
+  };
+})
+
+.factory('localNotificationSetup', function(deviceReady, $document, $window, $rootScope){
+  return function(done) {
+    deviceReady(function(){
+
+
+      var now = new Date().getTime();
+      var sixtySeconds = new Date(now + 10*1000);
+
+      window.plugin.notification.local.add({
+          id:      1,
+          title:   'WARNING',
+          message: 'test message'
+      });
+      
+      window.plugin.notification.local.onadd = function (id, state, json) {
+        $rootScope.$apply(function(){
+          done(id, state, json);
+        });
+      }, function(error){
+        $rootScope.$apply(function(){
+          throw new Error('Unable to retreive permission');
+        });
+      };
+    
+    
+    });
   };
 })
 

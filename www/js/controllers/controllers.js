@@ -1,5 +1,5 @@
 angular.module('HomeCtrl', [])
-.controller('HomeCtrl', function($scope, geolocation, notificationPromptPermission, notificationHasPermission) {
+.controller('HomeCtrl', function($scope, geolocation, notificationPromptPermission, notificationHasPermission, notificationSetup) {
 
   
 
@@ -24,6 +24,10 @@ angular.module('HomeCtrl', [])
   notificationHasPermission.hasPermission(function(granted){
       $scope.grantedHas = granted;
       alert('has' + $scope.grantedHas);
+  });
+
+  notificationSetup.showNotification(function(){
+      
   });
 
   /*
