@@ -76,11 +76,9 @@ angular.module('Service', [])
 
           var response;
 
-          window.plugin.notification.local.onadd = function (id, state, json) {
+          return window.plugin.notification.local.onadd = function (id, state, json) {
 
             response = {"id": id, "state": state, "json": json};
-
-            return response;
 
           };
 
