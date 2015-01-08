@@ -74,7 +74,7 @@ angular.module('Service', [])
   return {
     onAdd: function (id, state, json, callBack) {
 
-          window.plugin.notification.local.onadd = function (id, state, json) {
+          window.plugin.notification.local.onadd = function () {
 
           var that = this,
           args = arguments;
