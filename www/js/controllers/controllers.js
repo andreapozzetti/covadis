@@ -1,5 +1,5 @@
 angular.module('HomeCtrl', [])
-.controller('HomeCtrl', function($scope, geolocation, notificationPromptPermission, notificationHasPermission, notificationSetup) {
+.controller('HomeCtrl', function($scope, geolocation, notificationPromptPermission, notificationHasPermission, notificationSetup, notificationOnAdd) {
 
   
 
@@ -27,8 +27,12 @@ angular.module('HomeCtrl', [])
   });
 
   notificationSetup.showNotification(function(){
+      
+  });
 
-    window.plugin.notification.local.onadd = function (id, state, json) {
+  notificationOnAdd.onAdd(function(callBack){
+
+      alert(JSON.stringify(callBack));
 
       $scope.id = id;
       $scope.state = state;
@@ -37,8 +41,6 @@ angular.module('HomeCtrl', [])
       alert($scope.id);
       alert($scope.state);
       alert($scope.json);
-
-    };
       
   });
 
