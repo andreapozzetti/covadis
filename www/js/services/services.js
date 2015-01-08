@@ -74,22 +74,17 @@ angular.module('Service', [])
   return {
     onAdd: function () {
 
+          var response;
+
           window.plugin.notification.local.onadd = function (id, state, json) {
 
-            alert(id);
-            alert(state);
-            alert(json);
-
-            var response = {"id": id, "state": state, "json": json};
+            response = {"id": id, "state": state, "json": json};
 
             alert(JSON.stringify(response));
-            return response;
 
           };
       
-
-      
-    
+          return response;
     }
   };
 })
@@ -225,6 +220,6 @@ angular.module('Service', [])
    }
   }
  });
-
 */
+
 
