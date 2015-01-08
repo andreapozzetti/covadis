@@ -4,74 +4,34 @@
 // Simple value service.
 angular.module('Service', [])
 // phonegap ready service - listens to deviceready
-
 .factory('deviceReady', function(){
-  return function (fn) {
+  return function(done) {
+    if (typeof window.cordova === 'object') {
+      document.addEventListener('deviceready', function () {
+        done();
+      }, false);
+    } else {
+      done();
+    }
+  };
+})
 
-    var queue = [];
 
-    var impl = function () {
-      queue.push(Array.prototype.slice.call(arguments));
-    };
 
-    document.addEventListener('deviceready', function () {
-      queue.forEach(function (args) {
-        fn.apply(this, args);
+.factory('getCurrentPosition', function(deviceReady, $document, $window, $rootScope){
+  return function(done) {
+    deviceReady(function(){
+      navigator.geolocation.getCurrentPosition(function(position){
+        $rootScope.$apply(function(){
+          done(position);
+        });
+      }, function(error){
+        $rootScope.$apply(function(){
+          throw new Error('Unable to retreive position');
+        });
       });
-      impl = fn;
-    }, false);
-
-    return function () {
-      return impl.apply(this, arguments);
-    };
+    });
   };
-})
-
-.factory('geolocation', function(deviceReady, $document, $window, $rootScope){
-  return {
-
-    getCurrentPosition: deviceReady(function (onSuccess, onError, options) {
-
-      navigator.geolocation.getCurrentPosition(function () {
-        var that = this,
-          args = arguments;
-        if (onSuccess) {
-          $rootScope.$apply(function () {
-            onSuccess.apply(that, args);
-          });
-        }
-      }, function () {
-        var that = this,
-          args = arguments;
-
-        if (onError) {
-          $rootScope.$apply(function () {
-            onError.apply(that, args);
-          });
-        }
-      },
-      options);
-    })
-  };
-})
-
-.factory('parkInfo', function(deviceReady, $document, $window, $rootScope, $http){
-
-    return {
-        // call to get all nerds
-        freeParking : function() {
-      
-            return $http({
-                      method  : 'get',
-                      url     : 'http://www.andreapozzetti.eu/covadis/date.php',
-                      headers : { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' }
-                })
-              .then(function(result) {
-                return result.data;
-            });
-        }
-    }       
-
 })
 
 .factory('localNotificationPromptPermission', function(deviceReady, $document, $window, $rootScope){
