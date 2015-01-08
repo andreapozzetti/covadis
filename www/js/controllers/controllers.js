@@ -4,13 +4,13 @@ angular.module('HomeCtrl', [])
   
 
 
-  /*
+  
   geolocation.getPosition(function(position){
       $scope.latitude = position.coords.latitude;
       $scope.longitude = position.coords.longitude;
       alert($scope.latitude);
   });
-  */
+  
 
 
   
