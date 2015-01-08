@@ -1,5 +1,5 @@
 angular.module('HomeCtrl', [])
-.controller('HomeCtrl', function($scope, geolocation, notificationPromptPermission, notificationHasPermission, notificationSetup) {
+.controller('HomeCtrl', function($scope, geolocation, notificationPromptPermission, notificationHasPermission, notificationSetup, notificationOnAdd) {
 
   
 
@@ -27,6 +27,18 @@ angular.module('HomeCtrl', [])
   });
 
   notificationSetup.showNotification(function(){
+      
+  });
+
+  notificationOnAdd.onAdd(function(id, state, json){
+
+      $scope.id = id;
+      $scope.state = state;
+      $scope.json = json;
+      alert('ciao');
+      alert($scope.id);
+      alert($scope.state);
+      alert($scope.json);
       
   });
 
