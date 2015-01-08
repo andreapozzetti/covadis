@@ -4,25 +4,37 @@
 // Simple value service.
 angular.module('Service', [])
 // phonegap ready service - listens to deviceready
+
 .factory('deviceReady', function(){
-  return function(done) {
-    if (typeof window.cordova === 'object') {
-      document.addEventListener('deviceready', function () {
-        done();
-      }, false);
-    } else {
-      done();
-    }
+  return function (fn) {
+
+    var queue = [];
+
+    var impl = function () {
+      queue.push(Array.prototype.slice.call(arguments));
+    };
+
+    document.addEventListener('deviceready', function () {
+      queue.forEach(function (args) {
+        fn.apply(this, args);
+      });
+      impl = fn;
+    }, false);
+
+    return function () {
+      return impl.apply(this, arguments);
+    };
   };
 })
 
-.factory('geolocation', function($document, $window, $rootScope){
+.factory('geolocation', function(deviceReady, $document, $window, $rootScope){
   return {
-    getCurrentPosition: function (onSuccess, onError, options) {
+
+    getCurrentPosition: deviceReady(function (onSuccess, onError, options) {
+
       navigator.geolocation.getCurrentPosition(function () {
         var that = this,
           args = arguments;
-
         if (onSuccess) {
           $rootScope.$apply(function () {
             onSuccess.apply(that, args);
@@ -39,8 +51,27 @@ angular.module('Service', [])
         }
       },
       options);
-    }
+    })
   };
+})
+
+.factory('parkInfo', function(deviceReady, $document, $window, $rootScope, $http){
+
+    return {
+        // call to get all nerds
+        freeParking : function() {
+      
+            return $http({
+                      method  : 'get',
+                      url     : 'http://www.andreapozzetti.eu/covadis/date.php',
+                      headers : { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' }
+                })
+              .then(function(result) {
+                return result.data;
+            });
+        }
+    }       
+
 })
 
 .factory('localNotificationPromptPermission', function(deviceReady, $document, $window, $rootScope){

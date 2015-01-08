@@ -1,9 +1,9 @@
 angular.module('HomeCtrl', [])
 .controller('HomeCtrl', function($scope, geolocation, localNotificationHasPermission, localNotificationPromptPermission, localNotificationSetup, parkInfo, parkingList) {
 
-  
-
   geolocation.getCurrentPosition(function(position){
+
+    console.log("ciao");
     
       $scope.latitude = position.coords.latitude;
       $scope.longitude = position.coords.longitude;
