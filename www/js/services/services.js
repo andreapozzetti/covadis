@@ -3,21 +3,35 @@
 /* Services */
 // Simple value service.
 angular.module('Service', [])
-// phonegap ready service - listens to deviceready
-.factory('deviceReady', function(){
-  return function(done) {
-    if (typeof window.cordova === 'object') {
-      document.addEventListener('deviceready', function () {
-        done();
-      }, false);
-    } else {
-      done();
+
+.factory('geolocation', function ($rootScope) {
+  return {
+    getPosition: function (onSuccess, onError, options) {
+      navigator.geolocation.getCurrentPosition(function () {
+        var that = this,
+          args = arguments;
+
+        if (onSuccess) {
+          $rootScope.$apply(function () {
+            onSuccess.apply(that, args);
+          });
+        }
+      }, function () {
+        var that = this,
+          args = arguments;
+
+        if (onError) {
+          $rootScope.$apply(function () {
+            onError.apply(that, args);
+          });
+        }
+      },
+      options);
     }
   };
-})
+});
 
-
-
+/*
 .factory('getCurrentPosition', function(deviceReady, $document, $window, $rootScope){
   return function(done) {
     deviceReady(function(){
@@ -26,6 +40,7 @@ angular.module('Service', [])
           done(position);
         });
       }, function(error){
+        console.log(error);
         $rootScope.$apply(function(){
           throw new Error('Unable to retreive position');
         });
@@ -33,6 +48,9 @@ angular.module('Service', [])
     });
   };
 })
+*/
+
+/*
 
 .factory('localNotificationPromptPermission', function(deviceReady, $document, $window, $rootScope){
   return function(done) {
@@ -134,4 +152,5 @@ angular.module('Service', [])
   }
  });
 
+*/
 

@@ -1,5 +1,12 @@
 'use strict';
 
+document.addEventListener("deviceready", function() { 
+angular.element(document).ready(function () { 
+// retrieve the DOM element that had the ng-app attribute
+var domElement = document.querySelector("html");
+angular.bootstrap(domElement, ["coVadis"]); }); 
+}, false);
+
 // public/js/app.js
 angular.module('coVadis', ['ngRoute', 'appRoutes', 'HomeCtrl', 'Service']);
 
