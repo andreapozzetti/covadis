@@ -12,7 +12,7 @@ angular.module('HomeCtrl', [])
 
 
   
-  notificationPromptPermission(function(granted){
+  notificationPromptPermission.promptNotification(function(granted){
       $scope.grantedPrompt = granted;
       alert('prompt' + $scope.grantedPrompt);
   });

@@ -35,7 +35,7 @@ angular.module('Service', [])
 
     return {
         // call to get all nerds
-        freeParking : function() {
+        promptNotification : function() {
       
             return
               window.plugin.notification.local.promptForPermission(function (granted) {
