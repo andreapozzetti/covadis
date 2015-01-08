@@ -3,6 +3,7 @@ angular.module('HomeCtrl', [])
 
   
 
+  /*
   getCurrentPosition(function(position){
     
       $scope.latitude = position.coords.latitude;
@@ -10,7 +11,9 @@ angular.module('HomeCtrl', [])
       console.log("ciao");
       alert($scope.latitude);
   });
-/*
+
+  */
+
   localNotificationPromptPermission(function(granted){
       $scope.grantedPrompt = granted;
       console.log("ciao");
