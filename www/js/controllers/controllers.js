@@ -1,26 +1,23 @@
 angular.module('HomeCtrl', [])
-.controller('HomeCtrl', function($scope, geolocation) {
+.controller('HomeCtrl', function($scope, geolocation, notificationPromptPermission) {
 
   
 
 
   geolocation.getPosition(function(position){
-      
-      console.log(position);
       $scope.latitude = position.coords.latitude;
       $scope.longitude = position.coords.longitude;
-      console.log("ciao");
       alert($scope.latitude);
   });
 
 
-  /*
-  localNotificationPromptPermission(function(granted){
+  
+  notificationPromptPermission(function(granted){
       $scope.grantedPrompt = granted;
-      console.log("ciao");
       alert('prompt' + $scope.grantedPrompt);
   });
-
+  
+  /*
   localNotificationHasPermission(function(granted){
       $scope.grantedHas = granted;
       console.log("ciao");

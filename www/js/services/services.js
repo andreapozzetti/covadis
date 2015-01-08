@@ -29,26 +29,22 @@ angular.module('Service', [])
       options);
     }
   };
-});
-
-/*
-.factory('getCurrentPosition', function(deviceReady, $document, $window, $rootScope){
-  return function(done) {
-    deviceReady(function(){
-      navigator.geolocation.getCurrentPosition(function(position){
-        $rootScope.$apply(function(){
-          done(position);
-        });
-      }, function(error){
-        console.log(error);
-        $rootScope.$apply(function(){
-          throw new Error('Unable to retreive position');
-        });
-      });
-    });
-  };
 })
-*/
+
+.factory('notificationPromptPermission', function($document, $window, $rootScope){
+
+    return {
+        // call to get all nerds
+        freeParking : function() {
+      
+            return
+              window.plugin.notification.local.promptForPermission(function (granted) {
+                return granted;
+              })
+        }
+    }       
+
+})
 
 /*
 
