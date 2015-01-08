@@ -30,9 +30,7 @@ angular.module('HomeCtrl', [])
       
   });
 
-  notificationOnAdd(function(callBack){
-
-      alert(JSON.stringify(callBack));
+  notificationOnAdd(function(id, state, json){
 
       $scope.id = id;
       $scope.state = state;
