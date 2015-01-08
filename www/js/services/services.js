@@ -53,7 +53,7 @@ angular.module('Service', [])
       window.plugin.notification.local.hasPermission(function () {
         var that = this, args = arguments;
           $rootScope.$apply(function () {
-            onSuccess.apply(that, args);
+            granted.apply(that, args);
           });
       });
     }
