@@ -67,13 +67,11 @@ angular.module('HomeCtrl', [])
   });
   
 
-  $scope.test = database.getItem().then(function(data) {
+  $scope.test = database.getAllParking().then(function(data) {
 
-      alert('test');
       console.log(data);
-      alert(JSON.stringify(data));
-      //$scope.parkingList = data;
-      //return $scope.parkingList;
+      $scope.parkingList = data;
+      return $scope.parkingList;
 
   });
 

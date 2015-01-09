@@ -190,6 +190,35 @@ angular.module('Service', [])
         });
       });
       return deferred.promise;
+    },
+
+    getAllParking:function(){
+
+      var data = [];
+      var deferred = $q.defer();
+      var db = window.openDatabase('coVadis', '1.0', 'Park List', 200000);
+
+        db.transaction(function (tx) {
+          tx.executeSql('SELECT * FROM parking', [], function (tx, results) {
+              var len = results.rows.length, i;
+              for (i = 0; i < len; i++){
+                data.push({ id : results.rows.item(i).idParking,
+                            name : results.rows.item(i).name,
+                            address : results.rows.item(i).address,
+                            latitude : results.rows.item(i).latitude,
+                            longitude: results.rows.item(i).longitude,
+                            totalParkingNumber: results.rows.item(i).totalParkingNumber,
+                            minPrice: results.rows.item(i).minPrice,
+                            maxPrice: results.rows.item(i).maxPrice,
+                });
+              }
+              deferred.resolve(data);
+          }, 
+          function(e) {
+              console.log("ERROR:" + e.message);
+          });
+        });
+      return deferred.promise;
     }
 
   };
