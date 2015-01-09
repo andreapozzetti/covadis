@@ -172,26 +172,6 @@ angular.module('Service', [])
       return false;
     },
 
-    getItem: function() {
-
-      var db, deferred;
-      deferred = $q.defer();
-
-      db = window.openDatabase('coVadis', '1.0', 'Park List', 200000);
-
-      db.transaction(function(tx) {
-        tx.executeSql('CREATE TABLE IF NOT EXISTS parking (idParking INTEGER, name TEXT, address TEXT, latitude TEXT, longitude TEXT, totalParkingNumber INTEGER, minPrice INTEGER, maxPrice INTEGER)');
-        return tx.executeSql("select name from parking where idParking=1;", [], function(tx, res) {
-          if (res.rows.length > 0) {
-            return deferred.resolve(res.rows.item(0).data);
-          } else {
-            return deferred.resolve(false);
-          }
-        });
-      });
-      return deferred.promise;
-    },
-
     getAllParking:function(){
 
       var data = [];
@@ -202,7 +182,7 @@ angular.module('Service', [])
           tx.executeSql('SELECT * FROM parking', [], function (tx, results) {
               var len = results.rows.length, i;
               for (i = 0; i < len; i++){
-                data.push({ id : results.rows.item(i).idParking,
+                data.push({ idParking : results.rows.item(i).idParking,
                             name : results.rows.item(i).name,
                             address : results.rows.item(i).address,
                             latitude : results.rows.item(i).latitude,
@@ -212,6 +192,35 @@ angular.module('Service', [])
                             maxPrice: results.rows.item(i).maxPrice,
                 });
               }
+              deferred.resolve(data);
+          }, 
+          function(e) {
+              console.log("ERROR:" + e.message);
+          });
+        });
+      return deferred.promise;
+    },
+
+    getParking:function(idParking){
+
+      var data = {};
+      var deferred = $q.defer();
+      var db = window.openDatabase('coVadis', '1.0', 'Park List', 200000);
+
+        db.transaction(function (tx) {
+          tx.executeSql('SELECT * FROM parking WHERE idParking = '+ idParking +'', [], function (tx, results) {
+              
+                data = { 
+                        idParking : results.rows.item(0).idParking,
+                        name : results.rows.item(0).name,
+                        address : results.rows.item(0).address,
+                        latitude : results.rows.item(0).latitude,
+                        longitude: results.rows.item(0).longitude,
+                        totalParkingNumber: results.rows.item(0).totalParkingNumber,
+                        minPrice: results.rows.item(0).minPrice,
+                        maxPrice: results.rows.item(0).maxPrice,
+                }
+              
               deferred.resolve(data);
           }, 
           function(e) {

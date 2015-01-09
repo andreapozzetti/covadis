@@ -1,5 +1,5 @@
-angular.module('HomeCtrl', [])
-.controller('HomeCtrl', function($scope, database) {
+angular.module('Ctrl', [])
+.controller('HomeCtrl', function($scope, $routeParams, $location, database) {
 //.controller('HomeCtrl', function($scope, geolocation, notificationPromptPermission, notificationHasPermission, notificationSetup, notificationOnAdd) {
 
   /*
@@ -67,13 +67,19 @@ angular.module('HomeCtrl', [])
   });
   
 
-  $scope.test = database.getAllParking().then(function(data) {
-
-      console.log(data);
+  $scope.parkingList = database.getAllParking().then(function(data) {
       $scope.parkingList = data;
       return $scope.parkingList;
 
   });
+
+  $scope.parkingInfo = function(idParking){
+      $location.path("/parking/"+idParking);
+      
+
+  }
+
+
 
   /*
 
@@ -91,11 +97,16 @@ angular.module('HomeCtrl', [])
 
   console.log($scope.parkingList);
   
-  */
+  */  
+})
 
+.controller('parkingInfoCtrl', function($scope, $routeParams, $location, database) {
 
-
-    
-
-  
+      database.getParking(1).then(function(data) {
+      
+      $scope.parkingInfo = data;
+      
+      
+      });
+   
 });
