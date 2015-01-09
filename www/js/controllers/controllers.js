@@ -69,7 +69,7 @@ angular.module('HomeCtrl', [])
 
   $scope.test = database.getItem().then(function(data) {
 
-      alert('ciao');
+      alert('test');
       console.log(data);
       alert(JSON.stringify(data));
       //$scope.parkingList = data;
