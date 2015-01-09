@@ -1,18 +1,13 @@
 angular.module('HomeCtrl', [])
-.controller('HomeCtrl', function($scope, geolocation, notificationPromptPermission, notificationHasPermission, notificationSetup, notificationOnAdd) {
+.controller('HomeCtrl', function($scope, database) {
+//.controller('HomeCtrl', function($scope, geolocation, notificationPromptPermission, notificationHasPermission, notificationSetup, notificationOnAdd) {
 
-  
-
-
-  
+  /*
   geolocation.getPosition(function(position){
       $scope.latitude = position.coords.latitude;
       $scope.longitude = position.coords.longitude;
       alert($scope.latitude);
   });
-  
-
-
   
   notificationPromptPermission.promptNotification(function(granted){
       alert("ciao");
@@ -42,51 +37,11 @@ angular.module('HomeCtrl', [])
       
   });
 
+  */
+
+ 
   /*
 
-      localNotificationSetup(function(id, state, json){
-      $scope.id = id;
-      $scope.state = state;
-      $scope.json = json;
-      alert('ciao');
-      alert($scope.id);
-      alert($scope.state);
-      alert($scope.json);
-      });
-
-
-
-  
-
-  setInterval(function(){
-
-  parkInfo.freeParking().then(function(numberOfFreeParking) {
-
-    $scope.numberOfFreeParking = parseInt(numberOfFreeParking.orario);
-   
-    if($scope.numberOfFreeParking == 1){
-
-      
-      localNotificationSetup(function(id, state, json){
-      $scope.id = id;
-      $scope.state = state;
-      $scope.json = json;
-      //alert('ciao');
-      //alert($scope.id);
-      //alert($scope.state);
-      //alert($scope.json);
-      });
-      
-
-      console.log("ciao");
-
-    };
-
-  });
-
-  }, 5000);
-
-  
   $scope.parkingList = parkingList.list().then(function(data) {
 
       $scope.parkingList = data;
@@ -99,6 +54,30 @@ angular.module('HomeCtrl', [])
       return $scope.parkingList;
 
   });
+
+  */
+
+  
+  $scope.dbSetup = database.ckeckDB().then(function(data) {
+
+      console.log(data);
+      $scope.parkingList = data;
+      return $scope.parkingList;
+
+  });
+  
+
+  $scope.test = database.getItem().then(function(data) {
+
+      alert('ciao');
+      console.log(data);
+      alert(JSON.stringify(data));
+      //$scope.parkingList = data;
+      //return $scope.parkingList;
+
+  });
+
+  /*
 
 
       setInterval(function(){
@@ -113,27 +92,9 @@ angular.module('HomeCtrl', [])
       }, 5000);
 
   console.log($scope.parkingList);
-
-
-*/
-
-
-
-  /*
-
-  */
   
-
-  /*
-  try {
-    localNotification.localNotification(function(response){
-    	alert(response);
-    });
-  } catch(e) {
-    window.error = e;
-    console.error(e);
-  }
   */
+
 
 
     
