@@ -1,5 +1,5 @@
 angular.module('Ctrl', [])
-.controller('HomeCtrl', function($scope, $routeParams, $location, database) {
+.controller('HomeCtrl', function($scope, $routeParams, $location, database, indexedDB) {
 //.controller('HomeCtrl', function($scope, geolocation, notificationPromptPermission, notificationHasPermission, notificationSetup, notificationOnAdd) {
 
   /*
@@ -57,7 +57,11 @@ angular.module('Ctrl', [])
 
   */
 
+  /* --------------------------------------------------------------------------------------- */
+
+  /* WEB SQL*/
   
+  /*
   $scope.dbSetup = database.ckeckDB().then(function(data) {
 
       console.log(data);
@@ -78,7 +82,24 @@ angular.module('Ctrl', [])
       
 
   }
+  */
 
+  /* INDEX DB */
+
+  $scope.parkingList = indexedDB.setItems().then(function(data) {
+
+      console.log(data);
+      $scope.parkingList = data;
+      return $scope.parkingList;
+
+  });
+
+
+  
+
+
+  /* --------------------------------------------------------------------------------------- */
+  
 
 
   /*

@@ -172,7 +172,7 @@ angular.module('Service', [])
       return false;
     },
 
-    getAllParking:function(){
+    getAllParking: function(){
 
       var data = [];
       var deferred = $q.defer();
@@ -201,7 +201,7 @@ angular.module('Service', [])
       return deferred.promise;
     },
 
-    getParking:function(idParking){
+    getParking: function(idParking){
 
       var data = {};
       var deferred = $q.defer();
@@ -218,7 +218,7 @@ angular.module('Service', [])
                         longitude: results.rows.item(0).longitude,
                         totalParkingNumber: results.rows.item(0).totalParkingNumber,
                         minPrice: results.rows.item(0).minPrice,
-                        maxPrice: results.rows.item(0).maxPrice,
+                        maxPrice: results.rows.item(0).maxPrice
                 }
               
               deferred.resolve(data);
@@ -231,39 +231,286 @@ angular.module('Service', [])
     }
 
   };
-});
+})
 
-/*
+.factory('indexedDB', function($document, $window, $rootScope, $http, $log, $q) {
 
-app.factory('post_data', [
-  '$http', '$q', 'dbcache', function($http, $q, dbcache) {
-    var factory;
-    return factory = {
+  var factory;
+  var setUp=false;
+  var db;
+  return factory = {
 
-      load: function(post_id) {
-        var deferred;
-        deferred = $q.defer();
-        dbcache.getItem('post_data', 'load' + post_id).then(function(data) {
-          if (data) {
-            return deferred.resolve(jQuery.parseJSON(data));
-          } else {
+  init: function() {
+    var deferred = $q.defer();
 
-            return $http.get([url_to_server_api]).success(function(data2) {
-              dbcache.setItem('post_data', 'load' + post_id, JSON.stringify(data2));
-              return deferred.resolve(data2);
-            }).error(function(msg) {
-              return deferred.resolve(false);
-            });
-          }
-        
-        });
-        return deferred.promise;
-      }
+    if(setUp) {
+      deferred.resolve(true);
+      return deferred.promise;
+    }
+    
+    var openRequest = window.indexedDB.open("coVadis",1);
+  
+    openRequest.onerror = function(e) {
+      console.log("Error opening db");
+      console.dir(e);
+      deferred.reject(e.toString());
     };
-  }
-]);
 
-*/
+    openRequest.onupgradeneeded = function(e) {
+  
+      var thisDb = e.target.result;
+      var objectStore;
+      
+      //CREATE TABLE IF NOT EXIST
+      if(!thisDb.objectStoreNames.contains("parking")) {
+        objectStore = thisDb.createObjectStore("parking", { keyPath: "id", autoIncrement:true });
+        //objectStore.createIndex("titlelc", "titlelc", { unique: false });
+        //objectStore.createIndex("tags","tags", {unique:false,multiEntry:true});
+      }
+  
+    };
+
+    openRequest.onsuccess = function(e) {
+      db = e.target.result;
+      
+      db.onerror = function(event) {
+        // Generic error handler for all errors targeted at this database's
+        // requests!
+        deferred.reject("Database error: " + event.target.errorCode);
+      };
+      
+      setUp=true;
+      deferred.resolve(true);
+
+    
+    };  
+
+    return deferred.promise;
+  },
+
+  setUp: function() {
+    var deferred = $q.defer();
+    
+    factory.init().then(function() {
+
+      var result;
+      var handleResult = function(event) {
+
+        result = event.target.result
+
+      };  
+      
+      var transaction = db.transaction(["parking"], "readonly");
+
+      var objectStore = transaction.objectStore("parking");
+          objectStore.openCursor().onsuccess = handleResult;
+
+      transaction.oncomplete = function(event) {
+              deferred.resolve(result);
+
+      }     
+    
+    });
+    return deferred.promise;
+  },
+
+  setItems: function() {
+    //Should this call init() too? maybe
+    var deferred = $q.defer();
+    
+    factory.setUp().then(function(res) {
+
+    if (res == null)
+    {
+
+    var transaction;
+    var item;
+    var i = 0;
+
+      $http.get('http://www.andreapozzetti.eu/covadis/parkingList.json')
+      .success(function(data) {
+
+        transaction = db.transaction(["parking"], "readwrite");
+        item = transaction.objectStore("parking");
+
+        putNext(data);
+
+        function putNext(data){
+          if (i<data.length) {
+            ++i;
+            console.log(i);
+            item.put({   
+                      idParking : data[i-1].idParking,
+                      name : data[i-1].name,
+                      address : data[i-1].address,
+                      latitude : data[i-1].latitude,
+                      longitude: data[i-1].longitude,
+                      totalParkingNumber : data[i-1].totalParkingNumber,
+                      minPrice : data[i-1].minPrice,
+                      maxPrice : data[i-1].maxPrice
+                    }).onsuccess = putNext(data);
+          } 
+          else {   // complete
+            console.log('populate complete');
+              transaction.oncomplete = function(event) {
+              factory.getAllParking().then(function(res){
+                deferred.resolve(res);
+              });
+              
+              };
+          }
+
+        }
+
+      }).error(function(msg) {
+        return deferred.resolve(false);
+      });
+    }
+    else{
+      
+      factory.getAllParking().then(function(res){
+        deferred.resolve(res);
+      });
+
+    }
+    });
+    return deferred.promise;
+  },
+
+  getAllParking: function() {
+    var deferred = $q.defer();
+    
+    factory.init().then(function() {
+
+      var result = [];
+
+      var handleResult = function(event) {  
+        var cursor = event.target.result;
+        if (cursor) {
+          result.push({
+                        idParking:cursor.value.idParking,
+                        name:cursor.value.name,
+                        address:cursor.value.address,
+                        latitude:cursor.value.latitude,
+                        longitude:cursor.value.longitude,
+                        totalParkingNumber:cursor.value.totalParkingNumber,
+                        minPrice:cursor.value.minPrice,
+                        maxPrice:cursor.value.maxPrice
+                      });
+          cursor.continue();
+        }
+      };  
+      
+      var transaction = db.transaction(["parking"], "readonly");  
+      var objectStore = transaction.objectStore("parking");
+            objectStore.openCursor().onsuccess = handleResult;
+
+      transaction.oncomplete = function(event) {
+        deferred.resolve(result);
+      };
+    
+    });
+    return deferred.promise;
+  },
+
+  isSupported: function() {
+    return ("indexedDB" in window);   
+  },
+  
+  deleteNote: function(key) {
+    var deferred = $q.defer();
+    var t = db.transaction(["note"], "readwrite");
+    var request = t.objectStore("note").delete(key);
+    t.oncomplete = function(event) {
+      deferred.resolve();
+    };
+    return deferred.promise;
+  },
+  
+  getNote: function(key) {
+
+    var deferred = $q.defer();
+
+    var transaction = db.transaction(["note"]);  
+    var objectStore = transaction.objectStore("note");  
+    var request = objectStore.get(key);  
+
+    request.onsuccess = function(event) {  
+      var note = request.result;
+      deferred.resolve(note);
+    }; 
+    
+    return deferred.promise;
+  },
+  
+  getNotes: function() {
+    var deferred = $q.defer();
+    
+    init().then(function() {
+
+      var result = [];
+
+
+      var handleResult = function(event) {  
+        var cursor = event.target.result;
+        if (cursor) {
+          result.push({key:cursor.key, title:cursor.value.title, updated:cursor.value.updated});
+          cursor.continue();
+        }
+      };  
+      
+      var transaction = db.transaction(["note"], "readonly");  
+      var objectStore = transaction.objectStore("note");
+            objectStore.openCursor().onsuccess = handleResult;
+
+      transaction.oncomplete = function(event) {
+        deferred.resolve(result);
+      };
+    
+    });
+    return deferred.promise;
+  },
+  
+  ready: function() {
+    return setUp;
+  },
+  
+  saveNote: function(note) {
+    //Should this call init() too? maybe
+    var deferred = $q.defer();
+
+    if(!note.id) note.id = "";
+    
+    var titlelc = note.title.toLowerCase();
+    
+    //handle tags
+    var tags = [];
+    if(note.tags && note.tags.length) tags = note.tags.split(",");
+    
+    var t = db.transaction(["note"], "readwrite");
+    
+        if(note.id === "") {
+            t.objectStore("note")
+                            .add({title:note.title,body:note.body,updated:new Date().getTime(),titlelc:titlelc,tags:tags});
+        } else {
+            t.objectStore("note")
+                            .put({title:note.title,body:note.body,updated:new Date(),id:Number(note.id),titlelc:titlelc,tags:tags});
+        }
+
+    t.oncomplete = function(event) {
+      deferred.resolve();
+    };
+
+    return deferred.promise;
+  },
+  
+  supportsIDB: function() {
+    return "indexedDB" in window; 
+  }
+  
+  }
+
+});
 
 
 
