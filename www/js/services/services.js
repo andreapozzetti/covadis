@@ -30,6 +30,7 @@ angular.module('Service', [])
     }
   };
 })
+*/
 
 .factory('notificationPromptPermission', function ($rootScope) {
   return {
@@ -86,7 +87,7 @@ angular.module('Service', [])
   };
 })
 
-*/
+
 
 /*
 
@@ -108,6 +109,8 @@ angular.module('Service', [])
  })
 
 */
+
+/*
 
 .factory('database', function($document, $window, $rootScope, $http, $log, $q) {
 
@@ -514,7 +517,7 @@ angular.module('Service', [])
 
 
 
-
+*/
 
 
 

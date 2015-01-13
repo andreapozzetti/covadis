@@ -1,6 +1,6 @@
 angular.module('Ctrl', [])
-.controller('HomeCtrl', function($scope, $routeParams, $location, database, indexedDB) {
-//.controller('HomeCtrl', function($scope, geolocation, notificationPromptPermission, notificationHasPermission, notificationSetup, notificationOnAdd) {
+//.controller('HomeCtrl', function($scope, $routeParams, $location, database, indexedDB) {
+.controller('HomeCtrl', function($scope, notificationPromptPermission, notificationHasPermission, notificationSetup, notificationOnAdd) {
 
   /*
   geolocation.getPosition(function(position){
@@ -8,6 +8,8 @@ angular.module('Ctrl', [])
       $scope.longitude = position.coords.longitude;
       alert($scope.latitude);
   });
+
+*/
   
   notificationPromptPermission.promptNotification(function(granted){
       alert("ciao");
@@ -37,9 +39,7 @@ angular.module('Ctrl', [])
       
   });
 
-  */
-
- 
+   
   /*
 
   $scope.parkingList = parkingList.list().then(function(data) {
@@ -86,6 +86,8 @@ angular.module('Ctrl', [])
 
   /* INDEX DB */
 
+  /*
+
   $scope.parkingList = indexedDB.setItems().then(function(data) {
 
       console.log(data);
@@ -94,7 +96,7 @@ angular.module('Ctrl', [])
 
   });
 
-
+  */
   
 
 
