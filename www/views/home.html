@@ -1,9 +1,16 @@
-
-<div class="list-group">
-  <a href="" ng-repeat="parking in parkingList" ng-click="parkingInfo(parking.idParking)" class="list-group-item">
-    <span class="badge">{{parking.freeCarPark}}/{{parking.totalCarPark}}</span>
-    <h4 class="list-group-item-heading">{{parking.name}}</h4>
-    <p class="list-group-item-text">{{parking.address}}</p>
-	
-  </a>
+<div class="row">
+	<div class="col-lg-6 col-md-6 col-sm-6">
+		<a href="" ng-click="parking()" class="btn btn-primary btn-lg btn-block">Parking</a>
+	</div>
+	<div class="col-lg-6 col-md-6 col-sm-6">
+		<a href="" ng-click="bikesharing()" class="btn btn-info btn-lg btn-block">Bike Sharing</a>
+	</div>
+</div>
+<div class="row">
+	<div class="col-lg-6 col-md-6 col-sm-6">
+		<a href="" ng-click="bus()" class="btn btn-warning btn-lg btn-block">Bus</a>
+	</div>
+	<div class="col-lg-6 col-md-6 col-sm-6">
+		<a href="" ng-click="settings()" class="btn btn-default btn-lg btn-block">Settings</a>
+	</div>
 </div>

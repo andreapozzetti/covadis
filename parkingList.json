@@ -1,0 +1,35 @@
+[
+    {
+        "idParking": 1,
+        "name": "Parcheggio 1",
+        "address": "via Castelnuovo 14",
+        "citta": "Como",
+        "latitude": "45.80309",
+        "longitude": "9.09420",
+        "totalParkingNumber": 50,
+        "minPrice": 1,
+        "maxPrice": 2
+    },
+    {
+        "idParking": 2,
+        "name": "Parcheggio 2",
+        "address": "via Dante Alighieri 46",
+        "citta": "Como",
+        "latitude": "45.80178",
+        "longitude": "9.09291",
+        "totalParkingNumber": 35,
+        "minPrice": 2,
+        "maxPrice": 3
+    },
+    {
+        "idParking": 3,
+        "name": "Parcheggio 3",
+        "address": "via Napoleona",
+        "citta": "Como",
+        "latitude": "45.79548",
+        "longitude": "9.09159",
+        "totalParkingNumber": 65,
+        "minPrice": 1,
+        "maxPrice": 2
+    }
+]

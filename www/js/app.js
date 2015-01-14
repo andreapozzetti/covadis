@@ -12,15 +12,26 @@ angular.bootstrap(domElement, ["coVadis"]); });
 
 
 // public/js/app.js
-angular.module('coVadis', ['ngRoute', 'appRoutes', 'Ctrl', 'Service']);
+angular.module('coVadis', ['ngRoute', 'appRoutes', 'gettext', 'setLanguage', 'Ctrl', 'Service']);
 
 
 // Declare app level module which depends on filters, and services
 angular.module('appRoutes', [])
 .config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
 	$routeProvider
-		.when('/', {templateUrl: 'views/home.html', controller: 'HomeCtrl'})
-		.when('/parking/:idParking', {templateUrl: 'views/parking.html', controller: 'parkingInfoCtrl'})
+		.when('/', {templateUrl: 'views/home.html', controller: 'homeCtrl'})
+		.when('/language', {templateUrl: 'views/language.html', controller: 'languageCtrl'})
+		.when('/setup', {templateUrl: 'views/setup.html', controller: 'setupCtrl'})
+		.when('/parking', {templateUrl: 'views/parking.html', controller: 'parkingCtrl'})
+		.when('/parking/:idParking', {templateUrl: 'views/parkingInfo.html', controller: 'parkingInfoCtrl'})
+		.when('/bikesharing', {templateUrl: 'views/bikesharing.html', controller: 'bikesharingCtrl'})
+		.when('/bus', {templateUrl: 'views/bus.html', controller: 'busCtrl'})
+		.when('/settings', {templateUrl: 'views/settings.html', controller: 'settingsCtrl'})
 		.otherwise({redirectTo: '/'});
 }]);
+
+angular.module('setLanguage', ['gettext'])
+.run(function (gettextCatalog) {
+    gettextCatalog.currentLanguage = 'it';
+});
 

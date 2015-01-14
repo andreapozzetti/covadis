@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="coVadis">
   <head>
     <meta charset="utf-8">
     <title>coVadis</title>
@@ -13,14 +13,16 @@
       <script src="../bower_components/respond/dest/respond.min.js"></script>
     <![endif]-->
     <script src="cordova.js"></script>
-	<script src="js/platformOverrides.js"></script>
+	  <script src="js/lib/platformOverrides.js"></script>
     <script src="js/lib/jquery-1.11.2.min.js"></script>
     <script src="js/lib/angular.min.js"></script>
     <script src="js/lib/angular-route.min.js"></script>
+    <script src="js/lib/angular-gettext.min.js"></script>
     <script src="js/lib/bootstrap.min.js"></script>
     <script src="js/controllers/controllers.js"></script>
     <script src="js/services/services.js"></script>
     <script src="js/app.js"></script>
+    <script src="js/translations.js"></script>
 
 	
   </head>
@@ -93,7 +95,6 @@
 
     <div class="container">
 
-      <div class="page-header" id="banner">
         <div class="row">
           <div class="col-lg-8 col-md-7 col-sm-6">
             <h1>CoVadis</h1>
@@ -102,7 +103,6 @@
           <div class="col-lg-4 col-md-5 col-sm-6">
           </div>
         </div>
-      </div>
     
       <div class="row">
         <div ng-view></div>

@@ -1,0 +1,29 @@
+[
+    {
+        "idBikesharing": 1,
+        "name": "Bike Sharing 1",
+        "address": "via Castelnuovo 14",
+        "citta": "Como",
+        "latitude": "45.80309",
+        "longitude": "9.09420",
+        "totalBikeNumber": 10
+    },
+    {
+        "idBikesharing": 2,
+        "name": "Bike Sharing 2",
+        "address": "via Dante Alighieri 46",
+        "citta": "Como",
+        "latitude": "45.80178",
+        "longitude": "9.09291",
+        "totalBikeNumber": 12
+    },
+    {
+        "idBikesharing": 3,
+        "name": "Bike Sharing 3",
+        "address": "via Napoleona",
+        "citta": "Como",
+        "latitude": "45.79548",
+        "longitude": "9.09159",
+        "totalBikeNumber": 14
+    }
+]

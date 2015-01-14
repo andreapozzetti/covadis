@@ -1,5 +1,71 @@
 angular.module('Ctrl', [])
-.controller('HomeCtrl', function($scope, $routeParams, $location, database, notificationPromptPermission, notificationHasPermission, notificationSetup) {
+
+/* LANGUAGE CONTROLLER */
+
+.controller('languageCtrl', function($scope, $routeParams, $location, gettextCatalog) {
+
+  $scope.chooseLanguage = function(language){
+      gettextCatalog.setCurrentLanguage(language);
+      $location.path("/setup");
+  
+  }
+   
+})
+
+/* SETUP CONTROLLER */
+
+.controller('setupCtrl', function($scope, $routeParams, $location, database, gettextCatalog) {
+
+  database.parkingSetup().then(function(response) {
+    $scope.parking = "50";
+    
+    database.bikesharingSetup().then(function(response) {
+      $scope.bikesharing = "50";
+      $scope.setupComplete = true;
+    });
+  
+  });
+
+  $scope.home = function(){
+    $location.path("/");
+  }
+
+   
+})
+
+/* HOME CONTROLLER */
+
+.controller('homeCtrl', function($scope, $routeParams, $location, database, gettextCatalog) {
+
+  database.checkParking().then(function(response) {
+    console.log(response);
+    if(!response){
+      $location.path("/language");
+    }
+  
+  });
+
+  $scope.parking = function(){
+      $location.path("/parking");
+  }
+
+  $scope.bikesharing = function(){
+      $location.path("/bikesharing");
+  }
+
+  $scope.bus = function(){
+      $location.path("/bus");
+  }
+
+  $scope.settings = function(){
+      $location.path("/settings");
+  }
+   
+})
+
+/* test CONTROLLER */
+
+.controller('testCtrl', function($scope, $routeParams, $location, database, notificationPromptPermission, notificationHasPermission, notificationSetup, gettextCatalog) {
 //.controller('HomeCtrl', function($scope, geolocation, notificationPromptPermission, notificationHasPermission, notificationSetup, notificationOnAdd) {
 
   /*
@@ -20,13 +86,34 @@ angular.module('Ctrl', [])
   notificationHasPermission.hasPermission(function(granted){
 	  $scope.grantedHas = granted;
   });
-  */
-	
+
+
 setInterval(function(){
   notificationSetup.showNotification(function(){
       
   });
 }, 5000);
+
+  */
+
+  // Language switcher
+    $scope.languages = {
+        current: gettextCatalog.currentLanguage,
+        available: {
+        'it': 'Ita',
+        'en': 'Eng'
+        }
+    };
+
+    $scope.$watch('languages.current', function (lang) {
+      console.log(lang);
+        if (!lang) {
+            return;
+        }
+
+        gettextCatalog.setCurrentLanguage(lang);
+    });
+	
 
   
   /*
@@ -65,7 +152,7 @@ setInterval(function(){
   /* WEB SQL*/
   
   
-  
+  /*
   
   database.ckeckDB().then(function(data) {
 
@@ -75,6 +162,8 @@ setInterval(function(){
 	})
 	  
   });
+
+*/
   
   /*
 ;
