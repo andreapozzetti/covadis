@@ -17,10 +17,10 @@ angular.module('Ctrl', [])
 .controller('setupCtrl', function($scope, $routeParams, $location, database, gettextCatalog) {
 
   database.parkingSetup().then(function(response) {
-    $scope.parking = "50";
+    $scope.parking = "50%";
     
     database.bikesharingSetup().then(function(response) {
-      $scope.bikesharing = "50";
+      $scope.bikesharing = "50%";
       $scope.setupComplete = true;
     });
   
@@ -68,7 +68,6 @@ angular.module('Ctrl', [])
 .controller('parkingCtrl', function($scope, $routeParams, $location, database) {
 
   $scope.parkingList = database.getAllParking().then(function(data) {
-    console.log(data);
     $scope.parkingList = data;
     return $scope.parkingList;
   });
@@ -122,7 +121,6 @@ setInterval(function(){
     };
 
     $scope.$watch('languages.current', function (lang) {
-      console.log(lang);
         if (!lang) {
             return;
         }
