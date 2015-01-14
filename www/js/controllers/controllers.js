@@ -68,9 +68,14 @@ angular.module('Ctrl', [])
 .controller('parkingCtrl', function($scope, $routeParams, $location, database) {
 
   $scope.parkingList = database.getAllParking().then(function(data) {
+    console.log(data);
     $scope.parkingList = data;
     return $scope.parkingList;
   });
+
+  $scope.parkingInfo = function(idParking){
+      $location.path("/parking/"+idParking);
+  }
    
 })
 
