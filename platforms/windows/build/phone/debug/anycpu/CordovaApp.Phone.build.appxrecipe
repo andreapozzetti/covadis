@@ -1,0 +1,228 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Machine>ANDREA</Machine>
+    <WindowsUser>Andrea</WindowsUser>
+    <TargetPlatformIdentifier>WindowsPhoneApp</TargetPlatformIdentifier>
+    <SolutionConfiguration>debug|anycpu</SolutionConfiguration>
+    <PackageArchitecture>neutral</PackageArchitecture>
+    <PackageIdentityName>41341590-9a6e-11e4-a2fd-6d00b0851365</PackageIdentityName>
+    <IntermediateOutputPath>C:\Users\Andrea\coVadis\platforms\windows\build\phone\bld\</IntermediateOutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <AppXManifest Include="C:\Users\Andrea\coVadis\platforms\windows\build\phone\debug\anycpu\AppxManifest.xml">
+      <PackagePath>AppxManifest.xml</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppXManifest>
+  </ItemGroup>
+  <ItemGroup>
+    <AppxPackagedFile Include="C:\Users\Andrea\coVadis\platforms\windows\plugins\com.msopentech.websql\Community.CsharpSqlite.SQLiteClient.WinRT.dll">
+      <PackagePath>Community.CsharpSqlite.SQLiteClient.WinRT.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Andrea\coVadis\platforms\windows\plugins\com.msopentech.websql\Community.CsharpSqlite.WinRT.dll">
+      <PackagePath>Community.CsharpSqlite.WinRT.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Andrea\coVadis\platforms\windows\plugins\com.msopentech.websql\System.Data.Ersatz.WinRT.dll">
+      <PackagePath>System.Data.Ersatz.WinRT.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Andrea\coVadis\platforms\windows\plugins\com.msopentech.websql\SQLite.Proxy.winmd">
+      <PackagePath>SQLite.Proxy.winmd</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Andrea\coVadis\platforms\windows\images\Square150x150Logo.scale-240.png">
+      <PackagePath>images\Square150x150Logo.scale-240.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Andrea\coVadis\platforms\windows\images\Square44x44Logo.scale-240.png">
+      <PackagePath>images\Square44x44Logo.scale-240.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Andrea\coVadis\platforms\windows\images\Wide310x150Logo.scale-240.png">
+      <PackagePath>images\Wide310x150Logo.scale-240.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Andrea\coVadis\platforms\windows\images\Square71x71Logo.scale-240.png">
+      <PackagePath>images\Square71x71Logo.scale-240.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Andrea\coVadis\platforms\windows\images\SplashScreen.scale-240.png">
+      <PackagePath>images\SplashScreen.scale-240.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Andrea\coVadis\platforms\windows\images\StoreLogo.scale-240.png">
+      <PackagePath>images\StoreLogo.scale-240.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Andrea\coVadis\platforms\windows\www\img\logo.png">
+      <PackagePath>www\img\logo.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Andrea\coVadis\platforms\windows\www\cordova.js">
+      <PackagePath>www\cordova.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Andrea\coVadis\platforms\windows\www\cordova_plugins.js">
+      <PackagePath>www\cordova_plugins.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Andrea\coVadis\platforms\windows\www\js\app.js">
+      <PackagePath>www\js\app.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Andrea\coVadis\platforms\windows\www\js\controllers\controllers.js">
+      <PackagePath>www\js\controllers\controllers.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Andrea\coVadis\platforms\windows\www\js\lib\angular-animate.min.js">
+      <PackagePath>www\js\lib\angular-animate.min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Andrea\coVadis\platforms\windows\www\js\lib\angular-route.min.js">
+      <PackagePath>www\js\lib\angular-route.min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Andrea\coVadis\platforms\windows\www\js\lib\angular-touch.min.js">
+      <PackagePath>www\js\lib\angular-touch.min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Andrea\coVadis\platforms\windows\www\js\lib\angular.min.js">
+      <PackagePath>www\js\lib\angular.min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Andrea\coVadis\platforms\windows\www\js\lib\bootstrap.js">
+      <PackagePath>www\js\lib\bootstrap.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Andrea\coVadis\platforms\windows\www\js\lib\bootstrap.min.js">
+      <PackagePath>www\js\lib\bootstrap.min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Andrea\coVadis\platforms\windows\www\js\lib\jquery-1.11.2.min.js">
+      <PackagePath>www\js\lib\jquery-1.11.2.min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Andrea\coVadis\platforms\windows\www\js\lib\npm.js">
+      <PackagePath>www\js\lib\npm.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Andrea\coVadis\platforms\windows\www\js\platformOverrides.js">
+      <PackagePath>www\js\platformOverrides.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Andrea\coVadis\platforms\windows\www\js\services\services.js">
+      <PackagePath>www\js\services\services.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Andrea\coVadis\platforms\windows\www\js\winstore-jscompat.js">
+      <PackagePath>www\js\winstore-jscompat.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Andrea\coVadis\platforms\windows\www\plugins\com.msopentech.websql\src\windows\WebSqlProxy.js">
+      <PackagePath>www\plugins\com.msopentech.websql\src\windows\WebSqlProxy.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Andrea\coVadis\platforms\windows\www\plugins\com.msopentech.websql\www\WebSQL.js">
+      <PackagePath>www\plugins\com.msopentech.websql\www\WebSQL.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Andrea\coVadis\platforms\windows\www\plugins\com.msopentech.websql\www\windows\Database.js">
+      <PackagePath>www\plugins\com.msopentech.websql\www\windows\Database.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Andrea\coVadis\platforms\windows\www\plugins\com.msopentech.websql\www\windows\SqlTransaction.js">
+      <PackagePath>www\plugins\com.msopentech.websql\www\windows\SqlTransaction.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Andrea\coVadis\platforms\windows\www\plugins\de.appplant.cordova.plugin.local-notification\www\local-notification.js">
+      <PackagePath>www\plugins\de.appplant.cordova.plugin.local-notification\www\local-notification.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Andrea\coVadis\platforms\windows\www\plugins\org.apache.cordova.device\src\windows8\DeviceProxy.js">
+      <PackagePath>www\plugins\org.apache.cordova.device\src\windows8\DeviceProxy.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Andrea\coVadis\platforms\windows\www\plugins\org.apache.cordova.device\www\device.js">
+      <PackagePath>www\plugins\org.apache.cordova.device\www\device.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Andrea\coVadis\platforms\windows\www\plugins\org.apache.cordova.geolocation\src\windows\GeolocationProxy.js">
+      <PackagePath>www\plugins\org.apache.cordova.geolocation\src\windows\GeolocationProxy.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Andrea\coVadis\platforms\windows\www\plugins\org.apache.cordova.geolocation\www\Coordinates.js">
+      <PackagePath>www\plugins\org.apache.cordova.geolocation\www\Coordinates.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Andrea\coVadis\platforms\windows\www\plugins\org.apache.cordova.geolocation\www\geolocation.js">
+      <PackagePath>www\plugins\org.apache.cordova.geolocation\www\geolocation.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Andrea\coVadis\platforms\windows\www\plugins\org.apache.cordova.geolocation\www\Position.js">
+      <PackagePath>www\plugins\org.apache.cordova.geolocation\www\Position.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Andrea\coVadis\platforms\windows\www\plugins\org.apache.cordova.geolocation\www\PositionError.js">
+      <PackagePath>www\plugins\org.apache.cordova.geolocation\www\PositionError.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Andrea\coVadis\platforms\windows\www\plugins\org.apache.cordova.splashscreen\www\splashscreen.js">
+      <PackagePath>www\plugins\org.apache.cordova.splashscreen\www\splashscreen.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Andrea\coVadis\platforms\windows\www\plugins\org.apache.cordova.splashscreen\www\windows8\SplashScreenProxy.js">
+      <PackagePath>www\plugins\org.apache.cordova.splashscreen\www\windows8\SplashScreenProxy.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Andrea\coVadis\platforms\windows\www\css\bootstrap-theme.css">
+      <PackagePath>www\css\bootstrap-theme.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Andrea\coVadis\platforms\windows\www\css\bootstrap-theme.min.css">
+      <PackagePath>www\css\bootstrap-theme.min.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Andrea\coVadis\platforms\windows\www\css\bootstrap.css">
+      <PackagePath>www\css\bootstrap.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Andrea\coVadis\platforms\windows\www\css\bootstrap.min.css">
+      <PackagePath>www\css\bootstrap.min.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Andrea\coVadis\platforms\windows\www\css\bootswatch.min.css">
+      <PackagePath>www\css\bootswatch.min.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Andrea\coVadis\platforms\windows\www\css\index.css">
+      <PackagePath>www\css\index.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Andrea\coVadis\platforms\windows\www\css\style.css">
+      <PackagePath>www\css\style.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Andrea\coVadis\platforms\windows\www\css\bootstrap-theme.css.map">
+      <PackagePath>www\css\bootstrap-theme.css.map</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Andrea\coVadis\platforms\windows\www\css\bootstrap.css.map">
+      <PackagePath>www\css\bootstrap.css.map</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Andrea\coVadis\platforms\windows\www\js\lib\angular-animate.min.js.map">
+      <PackagePath>www\js\lib\angular-animate.min.js.map</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Andrea\coVadis\platforms\windows\www\js\lib\angular-route.min.js.map">
+      <PackagePath>www\js\lib\angular-route.min.js.map</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Andrea\coVadis\platforms\windows\www\js\lib\angular-touch.min.js.map">
+      <PackagePath>www\js\lib\angular-touch.min.js.map</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Andrea\coVadis\platforms\windows\www\js\lib\angular.min.js.map">
+      <PackagePath>www\js\lib\angular.min.js.map</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Andrea\coVadis\platforms\windows\www\fonts\glyphicons-halflings-regular.eot">
+      <PackagePath>www\fonts\glyphicons-halflings-regular.eot</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Andrea\coVadis\platforms\windows\www\fonts\glyphicons-halflings-regular.svg">
+      <PackagePath>www\fonts\glyphicons-halflings-regular.svg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Andrea\coVadis\platforms\windows\www\fonts\glyphicons-halflings-regular.ttf">
+      <PackagePath>www\fonts\glyphicons-halflings-regular.ttf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Andrea\coVadis\platforms\windows\www\fonts\glyphicons-halflings-regular.woff">
+      <PackagePath>www\fonts\glyphicons-halflings-regular.woff</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Andrea\coVadis\platforms\windows\www\index.html">
+      <PackagePath>www\index.html</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Andrea\coVadis\platforms\windows\www\views\home.html">
+      <PackagePath>www\views\home.html</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Andrea\coVadis\platforms\windows\www\views\parking.html">
+      <PackagePath>www\views\parking.html</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Andrea\coVadis\platforms\windows\config.xml">
+      <PackagePath>config.xml</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Andrea\coVadis\platforms\windows\plugins\de.appplant.cordova.plugin.local-notification\LocalNotification.cs">
+      <PackagePath>plugins\de.appplant.cordova.plugin.local-notification\LocalNotification.cs</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Andrea\coVadis\platforms\windows\plugins\de.appplant.cordova.plugin.local-notification\Options.cs">
+      <PackagePath>plugins\de.appplant.cordova.plugin.local-notification\Options.cs</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Andrea\coVadis\platforms\windows\build\phone\debug\anycpu\resources.pri">
+      <PackagePath>resources.pri</PackagePath>
+    </AppxPackagedFile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResolvedSDKReference Include="C:\Program Files %28x86%29\Microsoft SDKs\WindowsPhoneApp\v8.1\ExtensionSDKs\Microsoft.Phone.WinJS.2.1\1.0\">
+      <Name>Microsoft.Phone.WinJS.2.1</Name>
+      <Version>1.0.9651.0</Version>
+      <Architecture>Neutral</Architecture>
+      <FrameworkIdentity>Name=Microsoft.Phone.WinJS.2.1, MinVersion=1.0.9651.0</FrameworkIdentity>
+      <AppxLocation>C:\Program Files %28x86%29\Microsoft SDKs\WindowsPhoneApp\v8.1\ExtensionSDKs\Microsoft.Phone.WinJS.2.1\1.0\Microsoft.Phone.WinJS.2.1.appx</AppxLocation>
+      <MoreInfo>http://go.microsoft.com/fwlink/%3fLinkId=260891</MoreInfo>
+    </ResolvedSDKReference>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='utf-8'?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+        <HasSharedItems>true</HasSharedItems>
+        <SharedGUID>9ebdb27f-d75b-4d8c-b53f-7be4a1fe89f9</SharedGUID>
+    </PropertyGroup>
+    <ItemGroup>
+        <Content Include="$(MSBuildThisFileDirectory)www\**" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="$(MSBuildThisFileDirectory)config.xml" />
+    </ItemGroup>
+    <ItemGroup>
+        <Reference Include="SQLite.Proxy">
+            <HintPath>plugins\com.msopentech.websql\SQLite.Proxy.winmd</HintPath>
+            <IsWinMDFile>true</IsWinMDFile>
+        </Reference>
+    </ItemGroup>
+    <ItemGroup>
+        <Reference Include="Community.CsharpSqlite.WinRT">
+            <HintPath>plugins\com.msopentech.websql\Community.CsharpSqlite.WinRT.dll</HintPath>
+        </Reference>
+    </ItemGroup>
+    <ItemGroup>
+        <Reference Include="Community.CsharpSqlite.SQLiteClient.WinRT">
+            <HintPath>plugins\com.msopentech.websql\Community.CsharpSqlite.SQLiteClient.WinRT.dll</HintPath>
+        </Reference>
+    </ItemGroup>
+    <ItemGroup>
+        <Reference Include="System.Data.Ersatz.WinRT">
+            <HintPath>plugins\com.msopentech.websql\System.Data.Ersatz.WinRT.dll</HintPath>
+        </Reference>
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="plugins\de.appplant.cordova.plugin.local-notification\LocalNotification.cs" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="plugins\de.appplant.cordova.plugin.local-notification\Options.cs" />
+    </ItemGroup>
+</Project>

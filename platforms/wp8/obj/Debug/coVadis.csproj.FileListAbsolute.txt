@@ -1,0 +1,16 @@
+C:\Users\Andrea\coVadis\platforms\wp8\Bin\Debug\ApplicationIcon.png
+C:\Users\Andrea\coVadis\platforms\wp8\Bin\Debug\Background.png
+C:\Users\Andrea\coVadis\platforms\wp8\Bin\Debug\com.covadis.covadis.dll
+C:\Users\Andrea\coVadis\platforms\wp8\Bin\Debug\com.covadis.covadis.pdb
+C:\Users\Andrea\coVadis\platforms\wp8\Bin\Debug\AppManifest.xaml
+C:\Users\Andrea\coVadis\platforms\wp8\Bin\Debug\Properties\WMAppManifest.xml
+C:\Users\Andrea\coVadis\platforms\wp8\Bin\Debug\CordovaAppProj_Debug_AnyCPU.xap
+C:\Users\Andrea\coVadis\platforms\wp8\Bin\Debug\Community.CsharpSqlite.WinPhone.dll
+C:\Users\Andrea\coVadis\platforms\wp8\obj\Debug\coVadis.csprojResolveAssemblyReference.cache
+C:\Users\Andrea\coVadis\platforms\wp8\obj\Debug\App.g.cs
+C:\Users\Andrea\coVadis\platforms\wp8\obj\Debug\cordovalib\CordovaView.g.cs
+C:\Users\Andrea\coVadis\platforms\wp8\obj\Debug\MainPage.g.cs
+C:\Users\Andrea\coVadis\platforms\wp8\obj\Debug\com.covadis.covadis.g.resources
+C:\Users\Andrea\coVadis\platforms\wp8\obj\Debug\com.covadis.covadis.dll
+C:\Users\Andrea\coVadis\platforms\wp8\obj\Debug\com.covadis.covadis.pdb
+C:\Users\Andrea\coVadis\platforms\wp8\obj\Debug\XapCacheFile.xml

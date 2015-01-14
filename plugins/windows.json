@@ -1,0 +1,48 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {
+            "package.appxmanifest": {
+                "parents": {
+                    "/Package/Capabilities": [
+                        {
+                            "xml": "<DeviceCapability Name=\"location\" />",
+                            "count": 1
+                        }
+                    ]
+                }
+            },
+            "config.xml": {
+                "parents": {
+                    "/*": [
+                        {
+                            "xml": "<feature name=\"LocalNotification\"><param name=\"wp-package\" value=\"LocalNotification\" /></feature>",
+                            "count": 1
+                        }
+                    ]
+                }
+            }
+        }
+    },
+    "installed_plugins": {
+        "com.msopentech.websql": {
+            "PACKAGE_NAME": "com.covadis.covadis"
+        },
+        "org.apache.cordova.geolocation": {
+            "PACKAGE_NAME": "com.covadis.covadis"
+        },
+        "org.apache.cordova.splashscreen": {
+            "PACKAGE_NAME": "com.covadis.covadis"
+        },
+        "org.apache.cordova.device": {
+            "PACKAGE_NAME": "com.covadis.covadis"
+        },
+        "de.appplant.cordova.plugin.local-notification": {
+            "PACKAGE_NAME": "com.covadis.covadis"
+        }
+    },
+    "dependent_plugins": {}
+}
