@@ -273,7 +273,9 @@ angular.module('Service', [])
 
       var data = [];
       var deferred = $q.defer();
-      var db = window.openDatabase('coVadis', '1.0', 'Park List', 200000);
+
+      var dbSize = 5 * 1024 * 1024; // 5MB
+      var db = openDatabase('coVadis', '1.0', 'Park List', dbSize);
 
         db.transaction(function (tx) {
           tx.executeSql('SELECT * FROM parking', [], function (tx, results) {
@@ -285,6 +287,7 @@ angular.module('Service', [])
                             latitude : results.rows.item(i).latitude,
                             longitude: results.rows.item(i).longitude,
                             totalParkingNumber: results.rows.item(i).totalParkingNumber,
+                            freeParking: results.rows.item(i).freeParking,
                             minPrice: results.rows.item(i).minPrice,
                             maxPrice: results.rows.item(i).maxPrice,
                 });
@@ -302,7 +305,9 @@ angular.module('Service', [])
 
       var data = {};
       var deferred = $q.defer();
-      var db = window.openDatabase('coVadis', '1.0', 'Park List', 200000);
+
+      var dbSize = 5 * 1024 * 1024; // 5MB
+      var db = openDatabase('coVadis', '1.0', 'Park List', dbSize);
 
         db.transaction(function (tx) {
           tx.executeSql('SELECT * FROM parking WHERE idParking = '+ idParking +'', [], function (tx, results) {

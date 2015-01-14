@@ -63,6 +63,17 @@ angular.module('Ctrl', [])
    
 })
 
+/* PARKING CONTROLLER */
+
+.controller('parkingCtrl', function($scope, $routeParams, $location, database) {
+
+  $scope.parkingList = database.getAllParking().then(function(data) {
+    $scope.parkingList = data;
+    return $scope.parkingList;
+  });
+   
+})
+
 /* test CONTROLLER */
 
 .controller('testCtrl', function($scope, $routeParams, $location, database, notificationPromptPermission, notificationHasPermission, notificationSetup, gettextCatalog) {
@@ -218,13 +229,3 @@ setInterval(function(){
   */  
 })
 
-.controller('parkingInfoCtrl', function($scope, $routeParams, $location, database) {
-
-      database.getParking(1).then(function(data) {
-      
-      $scope.parkingInfo = data;
-      
-      
-      });
-   
-});
