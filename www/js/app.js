@@ -14,7 +14,7 @@ angular.bootstrap(domElement, ["coVadis"]); });
 // public/js/app.js
 angular.module('coVadis', ['ngRoute', 'appRoutes', 'gettext', 'setLanguage', 'ngActivityIndicator', 'Ctrl', 'Service'])
 .config(['$activityIndicatorProvider', function ($activityIndicatorProvider) {
-        $activityIndicatorProvider.setActivityIndicatorStyle('DottedWhite');
+        $activityIndicatorProvider.setActivityIndicatorStyle('DottedDark');
 }]);
 
 
