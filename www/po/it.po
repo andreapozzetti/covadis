@@ -15,3 +15,7 @@ msgstr ""
 #: setup.html
 msgid "Setup Completed"
 msgstr "Setup Completato"
+
+#: home.html
+msgid "Test"
+msgstr "Prova"

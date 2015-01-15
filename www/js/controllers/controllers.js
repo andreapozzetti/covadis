@@ -5,6 +5,7 @@ angular.module('Ctrl', [])
 .controller('languageCtrl', function($scope, $routeParams, $location, gettextCatalog) {
 
   $scope.chooseLanguage = function(language){
+      localStorage.setItem("language", language);
       gettextCatalog.setCurrentLanguage(language);
       $location.path("/setup");
   
@@ -35,14 +36,21 @@ angular.module('Ctrl', [])
 
 /* HOME CONTROLLER */
 
-.controller('homeCtrl', function($scope, $routeParams, $location, database, gettextCatalog) {
+.controller('homeCtrl', function($scope, $routeParams, $location, $timeout, $activityIndicator, geolocation, database, gettextCatalog) {
+
+  $activityIndicator.startAnimating();
 
   database.checkParking().then(function(response) {
-    console.log(response);
     if(!response){
       $location.path("/language");
     }
   
+  });
+
+  geolocation.getPosition(function(position){
+      $scope.latitude = position.coords.latitude;
+      $scope.longitude = position.coords.longitude;
+      alert($scope.latitude);
   });
 
   $scope.parking = function(){
@@ -60,6 +68,11 @@ angular.module('Ctrl', [])
   $scope.settings = function(){
       $location.path("/settings");
   }
+
+  $timeout(function () {
+  $activityIndicator.stopAnimating();
+  }, 3000)
+
    
 })
 

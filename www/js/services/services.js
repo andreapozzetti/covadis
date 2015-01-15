@@ -2,8 +2,6 @@
 /* Services */
 angular.module('Service', [])
 
-/*
-
 .factory('geolocation', function ($rootScope) {
   return {
     getPosition: function (onSuccess, onError, options) {
@@ -30,8 +28,6 @@ angular.module('Service', [])
     }
   };
 })
-
-*/
 
 .factory('notificationPromptPermission', function ($rootScope) {
   return {

@@ -12,7 +12,10 @@ angular.bootstrap(domElement, ["coVadis"]); });
 
 
 // public/js/app.js
-angular.module('coVadis', ['ngRoute', 'appRoutes', 'gettext', 'setLanguage', 'Ctrl', 'Service']);
+angular.module('coVadis', ['ngRoute', 'appRoutes', 'gettext', 'setLanguage', 'ngActivityIndicator', 'Ctrl', 'Service'])
+.config(['$activityIndicatorProvider', function ($activityIndicatorProvider) {
+        $activityIndicatorProvider.setActivityIndicatorStyle('DottedWhite');
+}]);
 
 
 // Declare app level module which depends on filters, and services
@@ -28,10 +31,11 @@ angular.module('appRoutes', [])
 		.when('/bus', {templateUrl: 'views/bus.html', controller: 'busCtrl'})
 		.when('/settings', {templateUrl: 'views/settings.html', controller: 'settingsCtrl'})
 		.otherwise({redirectTo: '/'});
-}]);
+}])
+
 
 angular.module('setLanguage', ['gettext'])
 .run(function (gettextCatalog) {
-    gettextCatalog.currentLanguage = 'it';
+    gettextCatalog.currentLanguage = localStorage.getItem('language');
 });
 
