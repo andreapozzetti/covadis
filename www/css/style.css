@@ -41,7 +41,7 @@
 /* SPINNER */
 
 /* Absolute Center CSS Spinner */
-.loading {
+.overlay {
   position: absolute;
   left: 0;
   top: 0;
@@ -51,21 +51,20 @@
   background-color: rgba(0,0,0,0.5); /*dim the background*/
 }
 
-.box-spinner{
-  position: fixed;
+.spinner{
+  color: white;
+  padding: 1em;
+  position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  margin-right: -50%;
+  transform: translate(-50%, -50%)
 
 }
 
-.loading-text{
-  position: fixed;
-  top: 54%;
-  left: 50%;
-  z-index: 1000;
-  transform: translate(-54%, -50%);
-  color: white;
+.center-spinner{
+  margin: auto;
+  text-align: center;
 }
 
 
