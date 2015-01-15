@@ -36,9 +36,9 @@ angular.module('Ctrl', [])
 
 /* HOME CONTROLLER */
 
-.controller('homeCtrl', function($scope, $routeParams, $location, $timeout, $activityIndicator, geolocation, database, gettextCatalog) {
+.controller('homeCtrl', function($scope, $routeParams, $location, $timeout, geolocation, database, gettextCatalog) {
 
-  $activityIndicator.startAnimating();
+  $scope.loading = true;
 
   database.checkParking().then(function(response) {
     if(!response){
@@ -69,7 +69,7 @@ angular.module('Ctrl', [])
   }
 
   $timeout(function () {
-  $activityIndicator.stopAnimating();
+  $scope.loading = false;
   }, 300000)
 
    

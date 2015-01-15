@@ -1,6 +1,15 @@
 <p translate>Test</p>
 
-<div ng-show="AILoading" ng-activity-indicator></div>
+<div ng-show="loading" class="overlay">
+	<div class="spinner">
+		<div id="circleG">
+			<div id="circleG_1" class="circleG"></div>
+			<div id="circleG_2" class="circleG"></div>
+			<div id="circleG_3" class="circleG"></div>
+		</div>
+	<div class="spinner-text">GEOLOCATING</div>
+	</div>
+</div>
 
 <div class="modal" ng-show="AILoading">
   <div class="modal-dialog">

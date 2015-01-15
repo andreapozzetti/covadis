@@ -12,10 +12,7 @@ angular.bootstrap(domElement, ["coVadis"]); });
 
 
 // public/js/app.js
-angular.module('coVadis', ['ngRoute', 'appRoutes', 'gettext', 'setLanguage', 'ngActivityIndicator', 'Ctrl', 'Service'])
-.config(['$activityIndicatorProvider', function ($activityIndicatorProvider) {
-        $activityIndicatorProvider.setActivityIndicatorStyle('DottedDark');
-}]);
+angular.module('coVadis', ['ngRoute', 'appRoutes', 'gettext', 'setLanguage', 'Ctrl', 'Service']);
 
 
 // Declare app level module which depends on filters, and services
