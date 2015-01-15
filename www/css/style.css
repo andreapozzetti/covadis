@@ -53,13 +53,21 @@
 
 .spinner{
   color: white;
-  padding: 1em;
   position: absolute;
+  z-index:1000;
+  display:table !important;
+  height:200px;
   top: 50%;
   left: 50%;
   margin-right: -50%;
   transform: translate(-50%, -50%)
 
+}
+
+.spinner-content{
+  display:table-cell;
+  vertical-align:middle;
+  text-align:center;
 }
 
 .spinner-text{
@@ -69,6 +77,7 @@
 
 #circleG{
 width:100px;
+height:20px;
 text-align: center;
 margin: auto;
 }
