@@ -70,7 +70,7 @@ angular.module('Ctrl', [])
 
   $timeout(function () {
   $activityIndicator.stopAnimating();
-  }, 3000)
+  }, 300000)
 
    
 })
