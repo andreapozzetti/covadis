@@ -124,7 +124,7 @@ angular.module('Service', [])
       
       db.transaction(function(tx) {
         
-        tx.executeSql('CREATE TABLE IF NOT EXISTS parking (idParking INTEGER, name TEXT, address TEXT, latitude TEXT, longitude TEXT, totalParkingNumber INTEGER, freeParking INTEGER, minPrice INTEGER, maxPrice INTEGER, lastUpdate INTEGER)');
+        tx.executeSql('CREATE TABLE IF NOT EXISTS parking (idParking INTEGER, name TEXT, address TEXT, latitude TEXT, longitude TEXT, totalParkingNumber INTEGER, freeParking INTEGER, minPrice INTEGER, maxPrice INTEGER, userDistance REAL, lastBasicInfoUpdate INTEGER, lastUpdate INTEGER)');
 
         tx.executeSql("SELECT * FROM parking", [], function(tx, res) {
 		  
@@ -196,11 +196,74 @@ angular.module('Service', [])
       
       db.transaction(function(tx) {
         
-        return tx.executeSql("INSERT INTO parking (idParking, name, address, latitude, longitude, totalParkingNumber, freeParking, minPrice, maxPrice, lastUpdate) VALUES (?,?,?,?,?,?,?,?,?,?)",
-                            [data.idParking, data.name, data.address, data.latitude, data.longitude, data.totalParkingNumber, 0, data.minPrice, data.maxPrice, new Date().getTime()], function(tx, res) {
+        return tx.executeSql("INSERT INTO parking (idParking, name, address, latitude, longitude, totalParkingNumber, freeParking, minPrice, maxPrice, userDistance, lastBasicInfoUpdate, lastUpdate) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)",
+                            [data.idParking, data.name, data.address, data.latitude, data.longitude, data.totalParkingNumber, 0, data.minPrice, data.maxPrice, 0.0,new Date().getTime(), new Date().getTime()], function(tx, res) {
                               return true;
                             });
       });
+      return false;
+    },
+
+    setParkingDistance: function(userLatitude, userLongitude){
+
+      var data = [];
+      var deferred = $q.defer();
+
+      var dbSize = 5 * 1024 * 1024; // 5MB
+      var db = openDatabase('coVadis', '1.0', 'Park List', dbSize);
+
+        db.transaction(function (tx) {
+          
+          return tx.executeSql('SELECT * FROM parking', [], function (tx, results) {
+              var len = results.rows.length, i;
+              for (i = 0; i < len; i++){
+
+                var distance = query.calculateDistance(userLatitude, userLongitude, results.rows.item(i).latitude, results.rows.item(i).longitude);
+                var idParking = results.rows.item(i).idParking;
+
+                query.setDistance(idParking, distance);
+              
+              }
+              return deferred.resolve(true);
+          }, 
+          function(e) {
+              console.log("ERROR:" + e.message);
+          });
+        });
+      return deferred.promise;
+    },
+
+    calculateDistance: function(userLatitude, userLongitude, parkingLatitude, parkingLongitude){
+
+      var R = 6371; // km
+
+      var dLat = (parkingLatitude-userLatitude) * Math.PI / 180;
+      var dLon = (parkingLongitude-userLongitude) * Math.PI / 180;
+
+      var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+        Math.cos(userLatitude * Math.PI / 180 ) * Math.cos(parkingLatitude * Math.PI / 180 ) *
+        Math.sin(dLon/2) * Math.sin(dLon/2);
+
+      var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+      var distance = (R * c * 1000).toFixed(1); //meters
+
+      
+      return distance;
+
+    },
+
+    setDistance: function(idParking, distance) {
+
+      var dbSize = 5 * 1024 * 1024; // 5MB
+      var db = openDatabase('coVadis', '1.0', 'Park List', dbSize);
+      
+      db.transaction(function(tx) {
+        
+        return tx.executeSql('UPDATE parking SET userDistance=?, lastUpdate=? WHERE idParking=?', [distance, new Date().getTime(), idParking], function(tx, res) {
+                              return true;
+                            });
+      });
+
       return false;
     },
 
@@ -286,6 +349,7 @@ angular.module('Service', [])
                             freeParking: results.rows.item(i).freeParking,
                             minPrice: results.rows.item(i).minPrice,
                             maxPrice: results.rows.item(i).maxPrice,
+                            userDistance: results.rows.item(i).userDistance
                 });
               }
               deferred.resolve(data);
@@ -316,7 +380,8 @@ angular.module('Service', [])
                         longitude: results.rows.item(0).longitude,
                         totalParkingNumber: results.rows.item(0).totalParkingNumber,
                         minPrice: results.rows.item(0).minPrice,
-                        maxPrice: results.rows.item(0).maxPrice
+                        maxPrice: results.rows.item(0).maxPrice,
+                        userDistance: results.rows.item(0).userDistance,
                 }
               
               deferred.resolve(data);

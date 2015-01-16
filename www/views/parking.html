@@ -1,9 +1,14 @@
+<div class="btn-group btn-group-justified">
+  <a href="" ng-click="setOrder('userDistance')" class="btn btn-primary" ng-class="{ 'active' : order == 'userDistance' }" >Distance</a>
+  <a href="" ng-click="setOrder('name')" class="btn btn-primary" ng-class="{ 'active' : order == 'name' }" >Free</a>
+</div>
+
 <div class="col-lg-12 col-md-12 col-sm-12">
 	<div class="list-group">
-	  <a href="" ng-repeat="parking in parkingList" ng-click="parkingInfo(parking.idParking)" class="list-group-item">
-	    <span class="badge">0/0</span>
+	  <a href="" ng-repeat="parking in parkingList|orderBy: order" ng-click="parkingInfo(parking.idParking)" class="list-group-item">
+	    <span class="badge">0/{{parking.totalParkingNumber}}</span>
 	    <h4 class="list-group-item-heading">{{parking.name}}</h4>
-	    <p class="list-group-item-text">{{parking.address}}</p>
+	    <p class="list-group-item-text">{{parking.address}} - {{parking.userDistance}}</p>
 	  </a>
 	</div>
 </div>

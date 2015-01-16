@@ -12,7 +12,7 @@ angular.bootstrap(domElement, ["coVadis"]); });
 
 
 // public/js/app.js
-angular.module('coVadis', ['ngRoute', 'appRoutes', 'gettext', 'setLanguage', 'Ctrl', 'Service']);
+angular.module('coVadis', ['ngRoute', 'appRoutes', 'gettext', 'setLanguage', 'leaflet-directive', 'Ctrl', 'Service']);
 
 
 // Declare app level module which depends on filters, and services
@@ -23,6 +23,7 @@ angular.module('appRoutes', [])
 		.when('/language', {templateUrl: 'views/language.html', controller: 'languageCtrl'})
 		.when('/setup', {templateUrl: 'views/setup.html', controller: 'setupCtrl'})
 		.when('/parking', {templateUrl: 'views/parking.html', controller: 'parkingCtrl'})
+		.when('/parkingmap', {templateUrl: 'views/parkingMap.html', controller: 'parkingMapCtrl'})
 		.when('/parking/:idParking', {templateUrl: 'views/parkingInfo.html', controller: 'parkingInfoCtrl'})
 		.when('/bikesharing', {templateUrl: 'views/bikesharing.html', controller: 'bikesharingCtrl'})
 		.when('/bus', {templateUrl: 'views/bus.html', controller: 'busCtrl'})

@@ -44,38 +44,51 @@ angular.module('Ctrl', [])
     if(!response){
       $location.path("/language");
     }
+    else{
+      $scope.start();
+    }
   
   });
 
-  geolocation.getPosition(function(position){
-      $scope.latitude = position.coords.latitude;
-      $scope.longitude = position.coords.longitude;
-  });
+  $scope.start = function(){
 
-  $scope.parking = function(){
-      $location.path("/parking");
+    geolocation.getPosition(function(position){
+
+        $scope.latitude = position.coords.latitude;
+        $scope.longitude = position.coords.longitude;
+        localStorage.setItem("userLatitude", $scope.latitude);
+        localStorage.setItem("userLongitude", $scope.longitude);
+
+        database.setParkingDistance($scope.latitude,$scope.longitude).then(function(response) {
+          $scope.loading = false;
+          console.log(response);
+          console.log('distance inserted');
+        })
+    
+    });
+
+    $scope.parking = function(){
+        $location.path("/parking");
+    }
+
+    $scope.bikesharing = function(){
+        $location.path("/bikesharing");
+    }
+
+    $scope.bus = function(){
+        $location.path("/bus");
+    }
+
+    $scope.settings = function(){
+        $location.path("/settings");
+    }
+
   }
-
-  $scope.bikesharing = function(){
-      $location.path("/bikesharing");
-  }
-
-  $scope.bus = function(){
-      $location.path("/bus");
-  }
-
-  $scope.settings = function(){
-      $location.path("/settings");
-  }
-
-  $timeout(function () {
-  $scope.loading = false;
-  }, 300000)
 
    
 })
 
-/* PARKING CONTROLLER */
+/* PARKING LIST CONTROLLER */
 
 .controller('parkingCtrl', function($scope, $routeParams, $location, database) {
 
@@ -84,9 +97,81 @@ angular.module('Ctrl', [])
     return $scope.parkingList;
   });
 
+  $scope.order = 'userDistance';
+
+  $scope.setOrder = function(order){
+    $scope.order = order;
+  }
+
   $scope.parkingInfo = function(idParking){
       $location.path("/parking/"+idParking);
   }
+   
+})
+
+/* PARKING MAP CONTROLLER */
+
+.controller('parkingMapCtrl', function($scope, $routeParams, $window, $location, database) {
+
+  console.log($window.innerHeight);
+
+  $scope.windowHeight = $window.innerHeight-100;
+
+  $scope.markers = [];
+
+  $scope.markers.push({ lat : parseFloat(localStorage.getItem('userLatitude')),
+                        lng : parseFloat(localStorage.getItem('userLongitude')),
+                        focus: true,
+                        label: {
+                                 message: "user",
+                                 options: {
+                                   noHide: true
+                                 }
+                                }
+                      })
+
+
+  database.getAllParking().then(function(data) {
+
+    for(var i=0;i<data.length;i++){
+      $scope.markers.push({  lat : parseFloat(data[i].latitude),
+                                    lng : parseFloat(data[i].longitude),
+                                    focus: true,
+                                    label: {
+                                      message: data[i].name,
+                                      options: {
+                                        noHide: true
+                                      }
+                                    }
+                                  });
+
+    }
+
+
+   console.log($scope.markers);
+  
+  });
+
+
+
+  angular.extend($scope, {
+                          como: {
+                              lat: 45.80806,
+                              lng: 9.08518,
+                              zoom: 14
+                          }
+  });
+   
+})
+
+/* PARKING CONTROLLER */
+
+.controller('parkingInfoCtrl', function($scope, $routeParams, $location, database) {
+
+  $scope.parkingInfo = database.getParking($routeParams.idParking).then(function(data) {
+    $scope.parkingInfo = data;
+    return $scope.parkingInfo;
+  });
    
 })
 
