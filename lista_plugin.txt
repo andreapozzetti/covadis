@@ -1,0 +1,7 @@
+WebSQL: cordova plugin add com.msopentech.websql
+Geolocation: cordova plugin add org.apache.cordova.geolocation
+SplashScreen: cordova plugin add org.apache.cordova.splashscreen
+Device: cordova plugin add org.apache.cordova.device
+InAppBrowser: cordova plugin add org.apache.cordova.inappbrowser
+AppAvability: cordova plugin add https://github.com/ohh2ahh/AppAvailability.git
+PushPlugin: git
