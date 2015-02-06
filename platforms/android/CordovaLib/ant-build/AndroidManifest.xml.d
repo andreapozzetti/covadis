@@ -1,2 +1,2 @@
-C:\Users\Andrea\coVadis\platforms\android\CordovaLib\ant-build\AndroidManifest.xml : \
-C:\Users\Andrea\coVadis\platforms\android\CordovaLib\AndroidManifest.xml \
+/Users/andrea/covadis/platforms/android/CordovaLib/ant-build/AndroidManifest.xml : \
+/Users/andrea/covadis/platforms/android/CordovaLib/AndroidManifest.xml \

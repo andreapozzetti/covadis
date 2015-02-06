@@ -15,12 +15,12 @@ angular.module('Ctrl', [])
 
 /* SETUP CONTROLLER */
 
-.controller('setupCtrl', function($scope, $routeParams, $location, database, gettextCatalog) {
+.controller('setupCtrl', function($scope, $routeParams, $location, parking, bikesharing, gettextCatalog) {
 
-  database.parkingSetup().then(function(response) {
+  parking.setupDB().then(function(response) {
     $scope.parking = "50%";
     
-    database.bikesharingSetup().then(function(response) {
+    bikesharing.setupDB().then(function(response) {
       $scope.bikesharing = "50%";
       $scope.setupComplete = true;
     });
@@ -36,11 +36,11 @@ angular.module('Ctrl', [])
 
 /* HOME CONTROLLER */
 
-.controller('homeCtrl', function($scope, $routeParams, $location, $timeout, geolocation, database, gettextCatalog) {
+.controller('homeCtrl', function($scope, $routeParams, $location, $timeout, geolocation, parking, bikesharing, gettextCatalog, push) {
 
   $scope.loading = true;
 
-  database.checkParking().then(function(response) {
+  parking.checkDB().then(function(response) {
     if(!response){
       $location.path("/language");
     }
@@ -51,7 +51,7 @@ angular.module('Ctrl', [])
   });
 
   $scope.start = function(){
-
+    
     geolocation.getPosition(function(position){
 
         $scope.latitude = position.coords.latitude;
@@ -59,12 +59,13 @@ angular.module('Ctrl', [])
         localStorage.setItem("userLatitude", $scope.latitude);
         localStorage.setItem("userLongitude", $scope.longitude);
 
-        database.setParkingDistance($scope.latitude,$scope.longitude).then(function(response) {
+        parking.distance($scope.latitude,$scope.longitude).then(function(response) {
           $scope.loading = false;
-          console.log(response);
-          console.log('distance inserted');
-        })
-    
+          //parking.freeParking().then(function(response) {
+          //$scope.loading = false;
+          //});
+        });
+
     });
 
     $scope.parking = function(){
@@ -83,6 +84,29 @@ angular.module('Ctrl', [])
         $location.path("/settings");
     }
 
+    $scope.openShopInComo = function(){
+      if(device.platform == "iOS"){
+        appAvailability.check('shopincomo://',
+          function() {  // Success callback
+              window.open('shopincomo://', '_system');
+          },
+          function() {  // Error callback
+              window.open('itms://itunes.apple.com/it/app/shopincomo/id886182483?mt=8', '_system')
+        });
+      }
+
+      if(device.platform == "Android"){
+        appAvailability.check('com.shopincomo.shopincomo',
+          function() {  // Success callback
+              window.open('shopincomo://', '_system');
+          },
+          function() {  // Error callback
+              window.open('market://details?id=com.shopincomo.shopincomo&hl=it', '_system')
+        });
+      }
+
+    }
+
   }
 
    
@@ -90,32 +114,50 @@ angular.module('Ctrl', [])
 
 /* PARKING LIST CONTROLLER */
 
-.controller('parkingCtrl', function($scope, $routeParams, $location, database) {
+.controller('parkingCtrl', function($scope, $routeParams, $location, parking, bikesharing) {
 
-  $scope.parkingList = database.getAllParking().then(function(data) {
+  $scope.parkingList = parking.getAllParking().then(function(data) {
     $scope.parkingList = data;
     return $scope.parkingList;
   });
 
   $scope.order = 'userDistance';
+  $scope.reverse = false;
 
-  $scope.setOrder = function(order){
+  $scope.setOrder = function(order,reverse){
     $scope.order = order;
+    $scope.reverse = reverse;
+  }
+
+  $scope.updateParking = function(){
+
+    parking.getFreeParking().then(function(){
+      $scope.parkingList = parking.getAllParking().then(function(data) {
+        $scope.parkingList = data;
+        return $scope.parkingList;
+      });
+
+    })
+
   }
 
   $scope.parkingInfo = function(idParking){
       $location.path("/parking/"+idParking);
+  }
+
+  $scope.showMap = function(visualization){
+      $location.path("/parkingmap");
   }
    
 })
 
 /* PARKING MAP CONTROLLER */
 
-.controller('parkingMapCtrl', function($scope, $routeParams, $window, $location, database) {
+.controller('parkingMapCtrl', function($scope, $routeParams, $window, $location, parking, bikesharing) {
 
   console.log($window.innerHeight);
 
-  $scope.windowHeight = $window.innerHeight-100;
+  $scope.windowHeight = $window.innerHeight-200;
 
   $scope.markers = [];
 
@@ -131,7 +173,7 @@ angular.module('Ctrl', [])
                       })
 
 
-  database.getAllParking().then(function(data) {
+  parking.getAllParking().then(function(data) {
 
     for(var i=0;i<data.length;i++){
       $scope.markers.push({  lat : parseFloat(data[i].latitude),
@@ -156,28 +198,130 @@ angular.module('Ctrl', [])
 
   angular.extend($scope, {
                           como: {
-                              lat: 45.80806,
-                              lng: 9.08518,
+                              autoDiscover: true,
                               zoom: 14
+                          },
+                          tileLayer: {
+                            url: "http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+                            opacity: 0.9,
+                            detectRetina: true,
+                            reuseTiles: true 
                           }
   });
+
+  $scope.showList = function(visualization){
+
+      $location.path("/parking/");
+
+  }
    
 })
 
 /* PARKING CONTROLLER */
 
-.controller('parkingInfoCtrl', function($scope, $routeParams, $location, database) {
+.controller('parkingInfoCtrl', function($scope, $routeParams, $location, parking, bikesharing, androidNavigate, push) {
 
-  $scope.parkingInfo = database.getParking($routeParams.idParking).then(function(data) {
+  $scope.parkingInfo = parking.getParking($routeParams.idParking).then(function(data) {
     $scope.parkingInfo = data;
     return $scope.parkingInfo;
   });
+
+  $scope.navigate = function(idParking,parkingName,parkingLatitude,parkingLongitude){
+
+    localStorage.setItem("idParking", idParking);
+    localStorage.setItem("parkingName", parkingName);
+
+    $scope.coordinates = ""+parseFloat(parkingLatitude).toFixed(5)+","+parseFloat(parkingLongitude).toFixed(5)+"";
+    
+      var pushNotification = window.plugins.pushNotification;
+
+      switch (device.platform) {
+          case ("Android" || "android"):
+              pushNotification.register(successHandler, errorHandler, {"senderID":"192576884107","ecb":"onNotification"});
+              androidNavigate.startNavigator($scope.coordinates, function(){});
+              break;
+          case "iOS":
+              pushNotification.register(tokenHandler, errorHandler, {"badge":"true","sound":"true","alert":"true","ecb":"onNotificationAPN"});
+              window.location.href = "maps:q="+$scope.coordinates+"";
+              break;
+          case "windows":
+              console.log("windows phone");
+              break;
+      } 
+
+      // Android
+      window.onNotification = function(e) {
+
+        switch( e.event ) {
+            case 'registered':
+              if ( e.regid.length > 0 ) {
+                var regId = e.regid;
+                var Userdevice = device.platform;
+                var idParking = localStorage.getItem('idParking');
+                var parkingName = localStorage.getItem('parkingName');
+
+                push.saveregId(regId, Userdevice, idParking, parkingName).then(function(response){
+                  var res = JSON.stringify(response);
+                })
+              }
+              break;
+            
+            case 'message':
+              if (e.foreground) {  
+                var my_media = new Media(e.sound);
+                my_media.play();
+                navigator.notification.alert(e.payload.message);
+              }
+              break;
+            case 'error':
+              console.log("error");
+              break;
+        }
+      }
+
+      // iOS
+      window.onNotificationAPN = function(e) {
+        if (e.alert) {
+          // showing an alert
+          navigator.notification.alert(e.alert);
+        }          
+        if (e.sound) {
+          var snd = new Media(e.sound);
+          snd.play();
+        }     
+        if (e.badge) {
+          pushNotification.setApplicationIconBadgeNumber(successHandler, e.badge);
+        }
+      }
+
+      function tokenHandler (token) {
+        
+        var Userdevice = device.platform;
+        var idParking = localStorage.getItem('idParking');
+        var parkingName = localStorage.getItem('parkingName');
+ 
+        push.saveregId(token, Userdevice, idParking, parkingName).then(function(response){
+          var res = JSON.stringify(response);
+        })
+
+      }
+
+      function successHandler (result) {
+        console.log(result);
+      }
+                
+      function errorHandler (error) {
+        console.log(error);
+      }
+
+  }
    
 })
 
 /* test CONTROLLER */
 
-.controller('testCtrl', function($scope, $routeParams, $location, database, notificationPromptPermission, notificationHasPermission, notificationSetup, gettextCatalog) {
+.controller('testCtrl', function($scope, $routeParams, $location, database, gettextCatalog) {
 //.controller('HomeCtrl', function($scope, geolocation, notificationPromptPermission, notificationHasPermission, notificationSetup, notificationOnAdd) {
 
   /*

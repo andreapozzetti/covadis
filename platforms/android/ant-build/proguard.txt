@@ -1,12 +1,12 @@
 # view AndroidManifest.xml #generated:6
--keep class com.covadis.covadis.coVadis { <init>(...); }
-
-# view AndroidManifest.xml #generated:12
--keep class de.appplant.cordova.plugin.localnotification.Receiver { <init>(...); }
-
-# view AndroidManifest.xml #generated:18
--keep class de.appplant.cordova.plugin.localnotification.ReceiverActivity { <init>(...); }
+-keep class com.covadis.covadis.CordovaApp { <init>(...); }
 
 # view AndroidManifest.xml #generated:13
--keep class de.appplant.cordova.plugin.localnotification.Restore { <init>(...); }
+-keep class com.plugin.gcm.CordovaGCMBroadcastReceiver { <init>(...); }
+
+# view AndroidManifest.xml #generated:20
+-keep class com.plugin.gcm.GCMIntentService { <init>(...); }
+
+# view AndroidManifest.xml #generated:12
+-keep class com.plugin.gcm.PushHandlerActivity { <init>(...); }
 

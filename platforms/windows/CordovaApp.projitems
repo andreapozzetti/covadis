@@ -32,10 +32,4 @@
             <HintPath>plugins\com.msopentech.websql\System.Data.Ersatz.WinRT.dll</HintPath>
         </Reference>
     </ItemGroup>
-    <ItemGroup>
-        <Content Include="plugins\de.appplant.cordova.plugin.local-notification\LocalNotification.cs" />
-    </ItemGroup>
-    <ItemGroup>
-        <Content Include="plugins\de.appplant.cordova.plugin.local-notification\Options.cs" />
-    </ItemGroup>
 </Project>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest">
     <Identity Name="com.covadis.covadis" Publisher="CN=$username$" Version="0.0.1.0" />
     <Properties>
@@ -24,5 +24,7 @@
     <Capabilities>
         <Capability Name="internetClient" />
         <DeviceCapability Name="location" />
+        <Capability Name="musicLibrary" />
+        <DeviceCapability Name="microphone" />
     </Capabilities>
 </Package>

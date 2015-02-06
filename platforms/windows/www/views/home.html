@@ -1,9 +1,42 @@
 ﻿
-<div class="list-group">
-  <a href="" ng-repeat="parking in parkingList" ng-click="parkingInfo(parking.idParking)" class="list-group-item">
-    <span class="badge">{{parking.freeCarPark}}/{{parking.totalCarPark}}</span>
-    <h4 class="list-group-item-heading">{{parking.name}}</h4>
-    <p class="list-group-item-text">{{parking.address}}</p>
-	
-  </a>
+
+<div ng-show="loading" class="overlay">
+	<div class="spinner col-lg-12 col-xs-12">
+		<div class="spinner-content">
+		<div id="circleG">
+			<div id="circleG_1" class="circleG"></div>
+			<div id="circleG_2" class="circleG"></div>
+			<div id="circleG_3" class="circleG"></div>
+		</div>
+		<div>GEOLOCATING</div>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-lg-8 col-md-7 col-sm-6">
+    	<h1>CoVadis</h1>
+    	<p class="lead">Park Finder</p>
+    </div>
+    <div class="col-lg-4 col-md-5 col-sm-6">
+    </div>
+</div>
+<p translate>Test</p>
+<p>{{iOStoken}}</p>
+<div class="row">
+	<div class="col-lg-6 col-xs-6">
+		<a href="" ng-click="parking()" class="btn btn-primary btn-lg btn-block">Parking</a>
+	</div>
+	<div class="col-lg-6 col-xs-6">
+		<a href="" ng-click="bikesharing()" class="btn btn-info btn-lg btn-block">Bike Sharing</a>
+	</div>
+</div>
+<div class="row">
+	<div class="col-lg-6 col-xs-6">
+		<a href="" ng-click="bus()" class="btn btn-warning btn-lg btn-block">Bus</a>
+	</div>
+	<div class="col-lg-6 col-xs-6">
+		<a href="" ng-click="settings()" class="btn btn-default btn-lg btn-block">Settings</a>
+	</div>
+	<button ng-click="openShopInComo()" class="btn btn-warning btn-lg btn-block">Open Shopincomo</button>
 </div>

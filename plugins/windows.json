@@ -11,18 +11,21 @@
                         {
                             "xml": "<DeviceCapability Name=\"location\" />",
                             "count": 1
+                        },
+                        {
+                            "xml": "<Capability Name=\"musicLibrary\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<DeviceCapability Name=\"microphone\" />",
+                            "count": 1
                         }
                     ]
                 }
             },
             "config.xml": {
                 "parents": {
-                    "/*": [
-                        {
-                            "xml": "<feature name=\"LocalNotification\"><param name=\"wp-package\" value=\"LocalNotification\" /></feature>",
-                            "count": 1
-                        }
-                    ]
+                    "/*": []
                 }
             }
         }
@@ -40,9 +43,28 @@
         "org.apache.cordova.device": {
             "PACKAGE_NAME": "com.covadis.covadis"
         },
-        "de.appplant.cordova.plugin.local-notification": {
+        "dk.interface.cordova.plugin.googlenavigate": {
+            "PACKAGE_NAME": "com.covadis.covadis"
+        },
+        "org.apache.cordova.media": {
+            "PACKAGE_NAME": "com.covadis.covadis"
+        },
+        "org.apache.cordova.dialogs": {
+            "PACKAGE_NAME": "com.covadis.covadis"
+        },
+        "com.phonegap.plugins.PushPlugin": {
+            "PACKAGE_NAME": "com.covadis.covadis"
+        },
+        "org.apache.cordova.inappbrowser": {
+            "PACKAGE_NAME": "com.covadis.covadis"
+        },
+        "com.ohh2ahh.plugins.appavailability": {
             "PACKAGE_NAME": "com.covadis.covadis"
         }
     },
-    "dependent_plugins": {}
+    "dependent_plugins": {
+        "org.apache.cordova.file": {
+            "PACKAGE_NAME": "com.covadis.covadis"
+        }
+    }
 }

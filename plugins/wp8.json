@@ -21,7 +21,23 @@
                             "count": 1
                         },
                         {
-                            "xml": "<feature name=\"LocalNotification\"><param name=\"wp-package\" value=\"LocalNotification\" /></feature>",
+                            "xml": "<feature name=\"File\"><param name=\"wp-package\" value=\"File\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Media\"><param name=\"wp-package\" value=\"Media\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Notification\"><param name=\"wp-package\" value=\"Notification\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"PushPlugin\"><param name=\"wp-package\" value=\"PushPlugin\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"InAppBrowser\"><param name=\"wp-package\" value=\"InAppBrowser\" /></feature>",
                             "count": 1
                         }
                     ]
@@ -37,6 +53,26 @@
                         {
                             "xml": "<Capability Name=\"ID_CAP_IDENTITY_DEVICE\" />",
                             "count": 1
+                        },
+                        {
+                            "xml": "<Capability Name=\"ID_CAP_MEDIALIB_AUDIO\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<Capability Name=\"ID_CAP_MEDIALIB_PLAYBACK\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<Capability Name=\"ID_CAP_MICROPHONE\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<Capability Name=\"ID_CAP_PUSH_NOTIFICATION\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<Capability Name=\"ID_CAP_NETWORKING\" />",
+                            "count": 2
                         }
                     ]
                 }
@@ -53,12 +89,30 @@
         "org.apache.cordova.splashscreen": {
             "PACKAGE_NAME": "{5e6a8d80-9b39-11e4-800c-136fba1826cb}"
         },
-        "de.appplant.cordova.plugin.local-notification": {
+        "dk.interface.cordova.plugin.googlenavigate": {
+            "PACKAGE_NAME": "{5e6a8d80-9b39-11e4-800c-136fba1826cb}"
+        },
+        "org.apache.cordova.device": {
+            "PACKAGE_NAME": "{5e6a8d80-9b39-11e4-800c-136fba1826cb}"
+        },
+        "org.apache.cordova.media": {
+            "PACKAGE_NAME": "{5e6a8d80-9b39-11e4-800c-136fba1826cb}"
+        },
+        "org.apache.cordova.dialogs": {
+            "PACKAGE_NAME": "{5e6a8d80-9b39-11e4-800c-136fba1826cb}"
+        },
+        "com.phonegap.plugins.PushPlugin": {
+            "PACKAGE_NAME": "{5e6a8d80-9b39-11e4-800c-136fba1826cb}"
+        },
+        "org.apache.cordova.inappbrowser": {
+            "PACKAGE_NAME": "{5e6a8d80-9b39-11e4-800c-136fba1826cb}"
+        },
+        "com.ohh2ahh.plugins.appavailability": {
             "PACKAGE_NAME": "{5e6a8d80-9b39-11e4-800c-136fba1826cb}"
         }
     },
     "dependent_plugins": {
-        "org.apache.cordova.device": {
+        "org.apache.cordova.file": {
             "PACKAGE_NAME": "{5e6a8d80-9b39-11e4-800c-136fba1826cb}"
         }
     }

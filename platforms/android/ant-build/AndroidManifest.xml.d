@@ -1,2 +1,2 @@
-C:\Users\Andrea\coVadis\platforms\android\ant-build\AndroidManifest.xml : \
-C:\Users\Andrea\coVadis\platforms\android\AndroidManifest.xml \
+/Users/andrea/covadis/platforms/android/ant-build/AndroidManifest.xml : \
+/Users/andrea/covadis/platforms/android/AndroidManifest.xml \
